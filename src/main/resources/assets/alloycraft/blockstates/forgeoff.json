@@ -1,0 +1,11 @@
+{
+    "variants": {
+        "inventory": { "model": "alloycraft:forgeoff" },
+        "normal": { "model": "alloycraft:forgeoff" },
+        "facing=north": { "model": "alloycraft:forgeoff" },
+        "facing=south": { "model": "alloycraft:forgeoff", "y": 180 },
+        "facing=west":  { "model": "alloycraft:forgeoff", "y": 270 },
+        "facing=east":  { "model": "alloycraft:forgeoff", "y": 90 }
+    }
+}
+
