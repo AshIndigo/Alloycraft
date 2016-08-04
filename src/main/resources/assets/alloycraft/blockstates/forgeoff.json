@@ -2,10 +2,14 @@
     "variants": {
         "inventory": { "model": "alloycraft:forgeoff" },
         "normal": { "model": "alloycraft:forgeoff" },
-        "facing=north": { "model": "alloycraft:forgeoff" },
-        "facing=south": { "model": "alloycraft:forgeoff", "y": 180 },
-        "facing=west":  { "model": "alloycraft:forgeoff", "y": 270 },
-        "facing=east":  { "model": "alloycraft:forgeoff", "y": 90 }
+        "active=false,facing=north": { "model": "alloycraft:forgeoff" },
+        "active=false,facing=south": { "model": "alloycraft:forgeoff", "y": 180 },
+        "active=false,facing=west":  { "model": "alloycraft:forgeoff", "y": 270 },
+        "active=false,facing=east":  { "model": "alloycraft:forgeoff", "y": 90 },
+        "active=true,facing=north": { "model": "alloycraft:forgeon" },
+        "active=true,facing=south": { "model": "alloycraft:forgeon", "y": 180 },
+        "active=true,facing=west":  { "model": "alloycraft:forgeon", "y": 270 },
+        "active=true,facing=east":  { "model": "alloycraft:forgeon", "y": 90 }
     }
 }
 

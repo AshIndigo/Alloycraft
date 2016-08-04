@@ -25,7 +25,6 @@ public class ForgeContainer extends Container {
 		lastItemBurnTime = 0;
 		
 		alloyfurnace = teAlloyFurnace;
-		
 		this.addSlotToContainer(new Slot(teAlloyFurnace, 0, 45, 17));
 		this.addSlotToContainer(new Slot(teAlloyFurnace, 1, 45, 49));
 		this.addSlotToContainer(new Slot(teAlloyFurnace, 2, 8, 56));
@@ -44,8 +43,9 @@ public class ForgeContainer extends Container {
 		}
 	}
 	
-	public void addCraftingToCrafters (IContainerListener crafting) {
-		//super.addCraftingToCrafters(crafting);
+	public void addListener(IContainerListener crafting) {
+		super.addListener(crafting);
+		crafting.sendAllWindowProperties(this, this.alloyfurnace);
 		crafting.sendProgressBarUpdate(this, 0, this.alloyfurnace.dualCookTime);
 		crafting.sendProgressBarUpdate(this, 1, this.alloyfurnace.dualPower);
 	}

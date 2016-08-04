@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "alloycraft:blocks/AlloyFurnaceTopOn",
+        "front": "alloycraft:blocks/AlloyFurnaceFrontOn",
+        "side": "alloycraft:blocks/AlloyFurnaceSideOn"
+    }
+}

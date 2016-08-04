@@ -37,7 +37,7 @@ public class ForgeGui extends GuiContainer {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         Minecraft.getMinecraft().getTextureManager().bindTexture(texture);
         drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
-
+        
         if (AlloyFurnace.hasPower())
         {
             int i1 = AlloyFurnace.getPowerRemainingScaled(45);

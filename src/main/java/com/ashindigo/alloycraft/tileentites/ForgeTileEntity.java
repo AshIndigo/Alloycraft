@@ -28,7 +28,7 @@ public class ForgeTileEntity extends TileEntity implements ISidedInventory, ITic
 	public int dualPower;
 	public int dualCookTime;
 	public final int maxPower = 32000;
-	public final int smeltingSpeed = 1;
+	public final int smeltingSpeed = 500;
 	
 	private final int[] slots_top = new int[] {0, 1};
 	private final int[] slots_bottom = new int[] {3};
@@ -238,8 +238,12 @@ public class ForgeTileEntity extends TileEntity implements ISidedInventory, ITic
 				dualCookTime = 0;
 			}
 			
-			if (flag != this.isSmelting()) {
+			if (this.isSmelting()) {
 				flag1 = true;
+				ForgeBlock.setState(true, this.worldObj, this.pos);
+			} else {
+				flag1 = false;
+				ForgeBlock.setState(false, this.worldObj, this.pos);
 			}
 		}
 		
