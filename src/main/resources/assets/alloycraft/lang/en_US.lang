@@ -5,6 +5,7 @@ item.alloycraft_alloyhoe.name=Alloy Hoe
 item.alloycraft_alloyaxe.name=Alloy Axe
 item.alloycraft_alloysword.name=Alloy Sword
 tile.forgeoff.name=Alloy Forge
+tile.forgeteslaoff.name=Tesla Alloy Forge
 achievement.alloyforgecrafted=Alloy Forge!
 achievement.alloyforgecrafted.desc=You made an Alloy Forge!
 achievement.alloycrafted=Alloy!

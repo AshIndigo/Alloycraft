@@ -18,10 +18,9 @@ public class AchievementHandler {
 		if (event.crafting.getItem() == AlloycraftItems.alloy) {
 			event.player.addStat(AlloycraftMain.alloy);
 		}
-		// TODO Axe is broken for now
-//		if (event.crafting.getItem() == AlloycraftItems.alloyaxe) {
-//			event.player.addStat(AlloycraftMain.alloyaxe);
-//		}
+		if (event.crafting.getItem() == AlloycraftItems.alloyaxe) {
+			event.player.addStat(AlloycraftMain.alloyaxe);
+		}
 		if (event.crafting.getItem() == AlloycraftItems.alloysword) {
 			event.player.addStat(AlloycraftMain.alloysword);
 		}

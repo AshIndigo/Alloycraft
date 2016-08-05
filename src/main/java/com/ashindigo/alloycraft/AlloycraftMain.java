@@ -49,6 +49,7 @@ public class AlloycraftMain implements UtilsMain {
 
 		// Can this be removed? (This feels dated)
 		public static final int guiIDForge = 1;
+		public static final int guiIDForgeTesla = 2;
 		
 		public static AchievementPage alloyCraftPage;
 		
@@ -70,7 +71,7 @@ public class AlloycraftMain implements UtilsMain {
 			GameRegistry.addRecipe(new RecipeHandler());
 			alloyforge = new UtilsAchievement("achievement.alloyforgemade", "alloyforgecrafted", 2, 0, new ItemStack(AlloycraftBlocks.forgeoff), null, "Alloy Forge!", "You made an Alloy Forge!", AlloycraftMain.modid);
 			alloy = new UtilsAchievement("achievement.alloymade", "alloycrafted", 2, 1, new ItemStack(AlloycraftItems.alloy), alloyforge, "Alloy!", "You made your first Alloy!", AlloycraftMain.modid);
-			alloyaxe = new UtilsAchievement("achievement.alloyaxemade", "alloyaxecrafted", 0, 2, new ItemStack(AlloycraftItems.alloy), alloy, "Alloy Axe", "Crafted an Alloy Axe", AlloycraftMain.modid);
+			alloyaxe = new UtilsAchievement("achievement.alloyaxemade", "alloyaxecrafted", 0, 2, new ItemStack(AlloycraftItems.alloyaxe), alloy, "Alloy Axe", "Crafted an Alloy Axe", AlloycraftMain.modid);
 			alloypick = new UtilsAchievement("achievement.alloypickmade", "alloypickcrafted", 1, 2, new ItemStack(AlloycraftItems.alloypickaxe), alloy, "Alloy Pickaxe", "Crafted an Alloy Pickaxe", AlloycraftMain.modid);
 			alloyhoe = new UtilsAchievement("achievement.alloyhoemade", "alloyhoecrafted", 2, 2, new ItemStack(AlloycraftItems.alloyhoe), alloy, "Alloy Hoe", "Crafted an Alloy Hoe", AlloycraftMain.modid);
 			alloysword = new UtilsAchievement("achievement.alloyswordmade", "alloyswordcrafted", 3, 2, new ItemStack(AlloycraftItems.alloysword), alloy, "Alloy Sword", "Crafted an Alloy Sword", AlloycraftMain.modid);

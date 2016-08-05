@@ -3,6 +3,10 @@ package com.ashindigo.alloycraft.tileentites;
 import com.ashindigo.alloycraft.blocks.ForgeBlock;
 import com.ashindigo.alloycraft.lib.ForgeRecipes;
 
+import net.darkhax.tesla.api.ITeslaConsumer;
+import net.darkhax.tesla.api.ITeslaHolder;
+import net.darkhax.tesla.api.ITeslaProducer;
+import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
 import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -11,13 +15,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.common.capabilities.Capability;
 
-public class ForgeTileEntity extends TileEntity implements ISidedInventory, ITickable {
+// TODO Add battery support
+// TODO Power wont save?
+public class ForgeTeslaTileEntity extends TileEntity implements ISidedInventory, ITickable, ITeslaConsumer, ITeslaHolder {
 
 	private ItemStack slots[];
 	
@@ -28,9 +33,12 @@ public class ForgeTileEntity extends TileEntity implements ISidedInventory, ITic
 	private final int[] slots_top = new int[] {0, 1};
 	private final int[] slots_bottom = new int[] {3};
 	private final int[] slots_side = new int[] {2};
+	private ForgeTeslaTileEntity container;
 	
-	public ForgeTileEntity() {
+	public ForgeTeslaTileEntity() {
 		slots = new ItemStack[4];
+		container = this;
+	 
 	}
 
 	@Override
@@ -61,18 +69,24 @@ public class ForgeTileEntity extends TileEntity implements ISidedInventory, ITic
 		return this.worldObj.getTileEntity(this.pos) != this ? false : player.getDistanceSq((double)this.pos.getX() + 0.5D, (double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) <= 64.0D;
 	}
 
-	@Override
-	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-		return i == 2 ? false : (i == 1 ? hasItemPower(itemstack) : true);
-	}
-	
-	public boolean hasItemPower(ItemStack itemstack) {
-		return getItemPower(itemstack) > 0;
-	}
-	
-	private static int getItemPower(ItemStack stack) {
-		return TileEntityFurnace.getItemBurnTime(stack);
-	}
+	    @Override
+	    @SuppressWarnings("unchecked")
+	    public <T> T getCapability (Capability<T> capability, EnumFacing facing) {
+	  
+	        if (capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_HOLDER)
+	            return (T) this.container;
+	            
+	        return super.getCapability(capability, facing);
+	    }
+	    
+	    @Override
+	    public boolean hasCapability (Capability<?> capability, EnumFacing facing) {
+	       
+	        if (capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_HOLDER)
+	            return true;
+	            
+	        return super.hasCapability(capability, facing);
+	    }
 	
 	public ItemStack decrStackSize(int i, int j) {
 		if (slots[i] != null) {
@@ -234,19 +248,6 @@ public class ForgeTileEntity extends TileEntity implements ISidedInventory, ITic
 		}
 		
 		if(!worldObj.isRemote) {
-			if (this.hasItemPower(this.slots[2]) && this.dualPower < (this.maxPower - this.getItemPower(this.slots[2]))) {
-				this.dualPower += getItemPower(this.slots[2]);
-				
-				if(this.slots[2] != null) {
-					flag1 = true;
-					
-					this.slots[2].stackSize--;
-					
-					if(this.slots[2].stackSize == 0) {
-						this.slots[2] = this.slots[2].getItem().getContainerItem(this.slots[2]);
-					}
-				}
-			}
 			
 			if (hasPower() && canSmelt()) {
 				dualCookTime++;
@@ -294,7 +295,7 @@ public class ForgeTileEntity extends TileEntity implements ISidedInventory, ITic
 
 	@Override
 	public String getName() {
-		return "Alloy Furnace";
+		return "Tesla Alloy Furnace";
 	}
 
 	@Override
@@ -325,6 +326,31 @@ public class ForgeTileEntity extends TileEntity implements ISidedInventory, ITic
 	@Override
 	public int getFieldCount() {
 		return 2;
+	}
+
+	@Override
+	public boolean isItemValidForSlot(int index, ItemStack stack) {
+		return false;
+	}
+
+	@Override
+	public long getCapacity() {
+		return maxPower;
+	}
+
+	@Override
+	public long getStoredPower() {
+		return this.dualPower;
+	}
+
+	@Override
+	public long givePower(long Tesla, boolean simulated) {
+		long acceptedTesla = Math.min(getCapacity() - this.dualPower, Math.min(100, Tesla));
+
+		if (!(simulated)) {
+			this.dualPower += acceptedTesla;
+		}
+		return acceptedTesla;
 	}
 	
 }

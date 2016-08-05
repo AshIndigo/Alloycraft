@@ -65,8 +65,6 @@ public class AlloySword extends ItemSword {
 		}
 	}
 	
-	// ??? Did this fail or something?
-	// XXX Question life and code
 	@Override
 	public void onCreated(ItemStack itemstack, World world, EntityPlayer player) {
 	        if (itemstack.getTagCompound() == null) {

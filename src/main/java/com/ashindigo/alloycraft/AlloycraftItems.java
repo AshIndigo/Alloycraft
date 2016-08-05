@@ -21,8 +21,7 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
-// TODO Add textures for alloy furnace
-// Possibly ingame generated colors for the stats?
+// TODO Possibly ingame generated colors for the stats?
 public class AlloycraftItems {
 	
 	public static Item alloy;
@@ -30,7 +29,7 @@ public class AlloycraftItems {
 	public static AlloyShovel alloyshovel;
 	public static AlloyPickaxe alloypickaxe;
 	public static AlloyHoe alloyhoe;
-	//public static AlloyAxe alloyaxe;
+	public static AlloyAxe alloyaxe;
 	public static ToolMaterial AlloyMat = EnumHelper.addToolMaterial("AlloyMat", 0, 0, 0, 0, 0);
 	
 	public static void preInitItems() {
@@ -39,7 +38,7 @@ public class AlloycraftItems {
 		alloyshovel = new AlloyShovel(AlloyMat, "alloyshovel", AlloycraftMain.modid);
 		alloypickaxe = new AlloyPickaxe(AlloyMat, "alloypickaxe", AlloycraftMain.modid);
 		alloyhoe = new AlloyHoe(AlloyMat, "alloyhoe", AlloycraftMain.modid);
-		//alloyaxe = new AlloyAxe(AlloyMat, "alloyaxe", AlloycraftMain.modid);
+		alloyaxe = new AlloyAxe(AlloyMat, "alloyaxe", AlloycraftMain.modid);
 	}
 
 	public static void initItems() {
@@ -49,7 +48,7 @@ public class AlloycraftItems {
 		if(FMLCommonHandler.instance().getSide() == Side.CLIENT) {
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(alloy, 0, new ModelResourceLocation(AlloycraftMain.modid + ":" + "alloy", "inventory"));
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(alloysword, 0, new ModelResourceLocation(AlloycraftMain.modid + ":" + "alloysword", "inventory"));
-		//	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(alloyaxe, 0, new ModelResourceLocation(AlloycraftMain.modid + ":" + "alloyaxe", "inventory"));
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(alloyaxe, 0, new ModelResourceLocation(AlloycraftMain.modid + ":" + "alloyaxe", "inventory"));
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(alloyhoe, 0, new ModelResourceLocation(AlloycraftMain.modid + ":" + "alloyhoe", "inventory"));
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(alloyshovel, 0, new ModelResourceLocation(AlloycraftMain.modid + ":" + "alloyshovel", "inventory"));
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(alloypickaxe, 0, new ModelResourceLocation(AlloycraftMain.modid + ":" + "alloypickaxe", "inventory"));

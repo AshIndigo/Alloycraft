@@ -1,6 +1,6 @@
 package com.ashindigo.alloycraft.lib;
 
-import com.ashindigo.alloycraft.tileentites.ForgeTileEntity;
+import com.ashindigo.alloycraft.tileentites.ForgeTeslaTileEntity;
 import com.ashindigo.utils.UtilsSlot;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,13 +14,13 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ForgeContainer extends Container {
+public class ForgeTeslaContainer extends Container {
 
-	private ForgeTileEntity alloyfurnace;
+	private ForgeTeslaTileEntity alloyfurnace;
 	private int dualCookTime;
 	private int dualPower;
 	
-	public ForgeContainer(InventoryPlayer invPlayer, ForgeTileEntity teAlloyFurnace) {
+	public ForgeTeslaContainer(InventoryPlayer invPlayer, ForgeTeslaTileEntity teAlloyFurnace) {
 		dualCookTime = 0;
 		dualPower = 0;
 		

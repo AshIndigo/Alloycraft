@@ -1,7 +1,9 @@
 package com.ashindigo.alloycraft.lib;
 
 import com.ashindigo.alloycraft.AlloycraftMain;
+import com.ashindigo.alloycraft.tileentites.ForgeTeslaTileEntity;
 import com.ashindigo.alloycraft.tileentites.ForgeTileEntity;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -21,6 +23,11 @@ public class GuiHandler implements IGuiHandler {
 					return new ForgeContainer(player.inventory, (ForgeTileEntity) entity);
 				}
 				return null;		
+			case AlloycraftMain.guiIDForgeTesla:
+				if (entity instanceof ForgeTeslaTileEntity) {
+					return new ForgeTeslaContainer(player.inventory, (ForgeTeslaTileEntity) entity);
+				}
+				return null;		
 		
 			}
 		}
@@ -37,6 +44,11 @@ public class GuiHandler implements IGuiHandler {
 			case AlloycraftMain.guiIDForge:
 				if (entity instanceof ForgeTileEntity) {
 					return new ForgeGui(player.inventory, (ForgeTileEntity) entity);
+				}
+				return null;
+			case AlloycraftMain.guiIDForgeTesla:
+				if (entity instanceof ForgeTeslaTileEntity) {
+					return new ForgeTeslaGui(player.inventory, (ForgeTeslaTileEntity) entity);
 				}
 				return null;
 			}

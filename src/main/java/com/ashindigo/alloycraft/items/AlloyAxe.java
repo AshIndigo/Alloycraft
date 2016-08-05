@@ -9,6 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -16,8 +17,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class AlloyAxe extends ItemAxe {
 
+	//TODO Using different constructor for axe
 	public AlloyAxe(ToolMaterial material, String name, String modid) {
-		super(material);
+		super(material, material.getDamageVsEntity(), 4F);
 		this.setUnlocalizedName(modid + "_" + name);
 	    setCreativeTab(CreativeTabs.COMBAT);
 		GameRegistry.register(this, new ResourceLocation(modid, name));
