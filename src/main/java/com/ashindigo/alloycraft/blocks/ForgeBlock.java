@@ -48,7 +48,8 @@ public class ForgeBlock extends BlockContainer {
 		super(Material.IRON);
 		isSmelting = false;
 		setUnlocalizedName(name);
-		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+		setHardness(3);
+		setCreativeTab(AlloycraftMain.alloycrafttab);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(ACTIVE, false));
 		
 	}

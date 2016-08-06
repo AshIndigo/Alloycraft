@@ -15,7 +15,7 @@ import net.minecraftforge.common.ForgeHooks;
  * @author Ash
  *
  */
-// TODO Dont use square root?
+// TODO Dont use square root? (Divide by numb of ingots?)
 public class RecipeHandler implements IRecipe {
 
 	private ItemStack result;

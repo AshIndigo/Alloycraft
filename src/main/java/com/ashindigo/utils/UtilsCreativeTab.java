@@ -5,7 +5,6 @@ import net.minecraft.item.Item;
 
 /**
  * Easy way for making a creative tab
- * TODO Add lang support for crative tab
  * @author Asher
  *
  */

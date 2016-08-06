@@ -34,11 +34,7 @@ public class AlloySword extends ItemSword {
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
-        System.out.println("Target Health: " + target.getHealth());
         target.setHealth(target.getHealth() - stack.getTagCompound().getInteger("Strength"));
-    	System.out.println("Enchantability: " + stack.getItem().getItemEnchantability(stack));
-		System.out.println("Max Uses: " + stack.getItem().getMaxDamage(stack));
-		System.out.println("Attack Damage: " + ((ItemSword) stack.getItem()).getDamageVsEntity());
         return true;
     }
 	

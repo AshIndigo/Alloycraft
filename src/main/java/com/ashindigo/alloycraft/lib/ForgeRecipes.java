@@ -7,6 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
+// So well written
 public class ForgeRecipes {
 	
 	public ForgeRecipes() {
@@ -14,7 +15,6 @@ public class ForgeRecipes {
 	}	
 	
 	public static ItemStack getOutput(ItemStack item, ItemStack item2) {
-		//  TODO Mess with values (255 is the max for color)
 		ItemStack itemstack;
 		itemstack = null;
 		itemstack = new ItemStack(AlloycraftItems.alloy, 1);
@@ -29,13 +29,21 @@ public class ForgeRecipes {
 			if (!itemstack.hasTagCompound()) {
 				   itemstack.setTagCompound(new NBTTagCompound());
 			if (item.getItem() == AlloycraftItems.alloy) {
-				itemstack.getTagCompound().setInteger("Strength", item.getTagCompound().getInteger("Strength"));
-				itemstack.getTagCompound().setInteger("Durability", item.getTagCompound().getInteger("Durability") + 15);
-				itemstack.getTagCompound().setInteger("Enchantability", item.getTagCompound().getInteger("Enchantability"));
+				if (item.getTagCompound().getInteger("Strength") != 255) {
+					itemstack.getTagCompound().setInteger("Strength", item.getTagCompound().getInteger("Strength") + 15);
+				} else {
+					itemstack.getTagCompound().setInteger("Strength", item.getTagCompound().getInteger("Strength"));
+				}
+					itemstack.getTagCompound().setInteger("Durability", item.getTagCompound().getInteger("Durability"));
+					itemstack.getTagCompound().setInteger("Enchantability", item.getTagCompound().getInteger("Enchantability"));
 			} else if (item2.getItem() == AlloycraftItems.alloy) {
-				itemstack.getTagCompound().setInteger("Strength", item2.getTagCompound().getInteger("Strength"));
-				itemstack.getTagCompound().setInteger("Durability", item2.getTagCompound().getInteger("Durability") + 15);
-				itemstack.getTagCompound().setInteger("Enchantability", item2.getTagCompound().getInteger("Enchantability"));
+				if (item2.getTagCompound().getInteger("Strength") != 255) {
+					itemstack.getTagCompound().setInteger("Strength", item2.getTagCompound().getInteger("Strength") + 15);
+				} else {
+					itemstack.getTagCompound().setInteger("Strength", item2.getTagCompound().getInteger("Strength"));
+				}
+					itemstack.getTagCompound().setInteger("Durability", item2.getTagCompound().getInteger("Durability"));
+					itemstack.getTagCompound().setInteger("Enchantability", item2.getTagCompound().getInteger("Enchantability"));
 			} 
 			}
 			return itemstack;
@@ -48,15 +56,23 @@ public class ForgeRecipes {
 				if (item.getItem() == Items.REDSTONE && item2.getItem() == AlloycraftItems.alloy || item.getItem() == AlloycraftItems.alloy && item2.getItem() == Items.REDSTONE) {
 					if (!itemstack.hasTagCompound()) {
 						   itemstack.setTagCompound(new NBTTagCompound());
-					if (item.getItem() == AlloycraftItems.alloy) {
-						itemstack.getTagCompound().setInteger("Strength", item.getTagCompound().getInteger("Strength") + 15);
-						itemstack.getTagCompound().setInteger("Durability", item.getTagCompound().getInteger("Durability"));
-						itemstack.getTagCompound().setInteger("Enchantability", item.getTagCompound().getInteger("Enchantability"));
-					} else if (item2.getItem() == AlloycraftItems.alloy) {
-						itemstack.getTagCompound().setInteger("Strength", item2.getTagCompound().getInteger("Strength") + 15);
-						itemstack.getTagCompound().setInteger("Durability", item2.getTagCompound().getInteger("Durability"));
-						itemstack.getTagCompound().setInteger("Enchantability", item2.getTagCompound().getInteger("Enchantability"));
-					} 
+							if (item.getItem() == AlloycraftItems.alloy) {
+									itemstack.getTagCompound().setInteger("Strength", item.getTagCompound().getInteger("Strength"));
+								if (item.getTagCompound().getInteger("Durability") != 255) {
+									itemstack.getTagCompound().setInteger("Durability", item.getTagCompound().getInteger("Durability") + 15);
+								} else {
+									itemstack.getTagCompound().setInteger("Durability", item.getTagCompound().getInteger("Durability"));
+								}
+									itemstack.getTagCompound().setInteger("Enchantability", item.getTagCompound().getInteger("Enchantability"));
+							} else if (item2.getItem() == AlloycraftItems.alloy) {
+								itemstack.getTagCompound().setInteger("Strength", item2.getTagCompound().getInteger("Strength"));
+								if (item2.getTagCompound().getInteger("Durability") != 255) {
+									itemstack.getTagCompound().setInteger("Durability", item2.getTagCompound().getInteger("Durability") + 15);
+								} else {
+									itemstack.getTagCompound().setInteger("Durability", item2.getTagCompound().getInteger("Durability"));
+								}
+									itemstack.getTagCompound().setInteger("Enchantability", item2.getTagCompound().getInteger("Enchantability"));
+							} 
 					}
 					return itemstack;
 				}
@@ -71,11 +87,19 @@ public class ForgeRecipes {
 				if (item.getItem() == AlloycraftItems.alloy) {
 					itemstack.getTagCompound().setInteger("Strength", item.getTagCompound().getInteger("Strength"));
 					itemstack.getTagCompound().setInteger("Durability", item.getTagCompound().getInteger("Durability"));
-					itemstack.getTagCompound().setInteger("Enchantability", item.getTagCompound().getInteger("Enchantability") + 15);
+					if (item.getTagCompound().getInteger("Enchantability") != 255) {
+						itemstack.getTagCompound().setInteger("Enchantability", item.getTagCompound().getInteger("Enchantability") + 15);
+					} else {
+						itemstack.getTagCompound().setInteger("Enchantability", item.getTagCompound().getInteger("Enchantability"));
+					}
 				} else if (item2.getItem() == AlloycraftItems.alloy) {
 					itemstack.getTagCompound().setInteger("Strength", item2.getTagCompound().getInteger("Strength"));
 					itemstack.getTagCompound().setInteger("Durability", item2.getTagCompound().getInteger("Durability"));
-					itemstack.getTagCompound().setInteger("Enchantability", item2.getTagCompound().getInteger("Enchantability") + 15);
+					if (item2.getTagCompound().getInteger("Enchantability") != 255) {
+						itemstack.getTagCompound().setInteger("Enchantability", item2.getTagCompound().getInteger("Enchantability") + 15);
+					} else {
+						itemstack.getTagCompound().setInteger("Enchantability", item2.getTagCompound().getInteger("Enchantability"));
+					}
 				}
 				}
 			return itemstack;

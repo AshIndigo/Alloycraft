@@ -49,14 +49,6 @@ public class UtilsArmor extends ItemArmor {
 	}
 	
 	/**
-	 * Auto creates an entire armor set.
-	 * @param unlocalizedName The name of the armor
-	 * @param material The armor material for the set
-	 * @param modid The modid of your mod
-	 * @param mat The item used for crafting the armor
-	 */
-	
-	/**
 	 * For auto recipe creation please add all 4 pieces of armor in order: Helmet - Chestplate - Leggings - Boots.
 	 * @param unlocalizedName The name of the armor
 	 * @param material The armor material for the set

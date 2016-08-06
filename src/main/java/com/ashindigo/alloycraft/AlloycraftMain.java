@@ -9,15 +9,12 @@ import com.ashindigo.utils.UtilsCreativeTab;
 import com.ashindigo.utils.UtilsMain;
 import com.ashindigo.utils.UtilsMod;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemModelMesher;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -28,6 +25,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+// TODO Add armor pieces
 @Mod(modid = AlloycraftMain.modid, version = "1.0", name = "Alloycraft")
 public class AlloycraftMain implements UtilsMain {
 	
@@ -54,12 +52,18 @@ public class AlloycraftMain implements UtilsMain {
 		public static final int guiIDForgeTesla = 2;
 		
 		public static UtilsCreativeTab alloycrafttab;
-		
+		public static Configuration config;
 		public static AchievementPage alloyCraftPage;
+		public static int maxPower;
+		public static int smeltingSpeed;
 		
 		@EventHandler
 		public void preinit(FMLPreInitializationEvent event) {
 			
+			config = new Configuration(event.getSuggestedConfigurationFile());
+			smeltingSpeed = config.getInt("Smelting Speed", "default", 50, 1, Integer.MAX_VALUE, "Controls how fast the Alloy Forge smelts");
+			maxPower = config.getInt("Max Power", "default", 32000, 1, Integer.MAX_VALUE, "How much power can the Alloy Forge hold");
+			config.save();
 			AlloycraftItems.preInitItems();
 			AlloycraftBlocks.preInitBlocks();
 			UtilsMod.modidList.add(modid);

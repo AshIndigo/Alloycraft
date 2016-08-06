@@ -21,7 +21,6 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
-// TODO Null Check for color NBT
 // RIP
 public class AlloycraftItems {
 	
@@ -31,7 +30,6 @@ public class AlloycraftItems {
 	public static AlloyPickaxe alloypickaxe;
 	public static AlloyHoe alloyhoe;
 	public static AlloyAxe alloyaxe;
-	public static IItemColor colour;
 	public static ToolMaterial AlloyMat = EnumHelper.addToolMaterial("AlloyMat", 0, 0, 0, 0, 0);
 	
 	public static void preInitItems() {
@@ -44,18 +42,19 @@ public class AlloycraftItems {
 	}
 
 	public static void initItems() {
-		GameRegistry.addShapelessRecipe(new ItemStack(alloy, 1), new Object[]{
-	    		new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(Items.IRON_INGOT, 1)
-		});
-		colour = new IItemColor() {
+		// Alloy
+		IItemColor colour = new IItemColor() {
             public int getColorFromItemstack(ItemStack stack, int tintIndex) {
             	if (stack.getTagCompound() != null) {
+            		// Checks to make sure all stats are less than or equal too 255
+            		if (stack.getTagCompound().getInteger("Strength") <= 255 && stack.getTagCompound().getInteger("Durability") <= 255 && stack.getTagCompound().getInteger("Enchantability") <= 255) {
             		return new Color(stack.getTagCompound().getInteger("Strength"), stack.getTagCompound().getInteger("Durability"), stack.getTagCompound().getInteger("Enchantability")).getRGB();
             	}
-					return 0;
+            	}
+					return new Color(255,255,255).getRGB();
             	}
         };
-		Minecraft.getMinecraft().getItemColors().registerItemColorHandler(colour, alloy);
+    	Minecraft.getMinecraft().getItemColors().registerItemColorHandler(colour, new Item[] {alloy, alloysword, alloyaxe, alloyhoe, alloyshovel, alloypickaxe});
 		if(FMLCommonHandler.instance().getSide() == Side.CLIENT) {
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(alloy, 0, new ModelResourceLocation(AlloycraftMain.modid + ":" + "alloy", "inventory"));
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(alloysword, 0, new ModelResourceLocation(AlloycraftMain.modid + ":" + "alloysword", "inventory"));
