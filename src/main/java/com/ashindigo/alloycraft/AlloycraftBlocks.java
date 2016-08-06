@@ -5,7 +5,6 @@ import com.ashindigo.alloycraft.blocks.ForgeTeslaBlock;
 import com.ashindigo.alloycraft.tileentites.ForgeTeslaTileEntity;
 import com.ashindigo.alloycraft.tileentites.ForgeTileEntity;
 import com.ashindigo.utils.UtilsItemBlockLoader;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelMesher;

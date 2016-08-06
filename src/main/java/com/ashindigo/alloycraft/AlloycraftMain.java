@@ -5,12 +5,14 @@ import com.ashindigo.alloycraft.lib.CommonProxy;
 import com.ashindigo.alloycraft.lib.GuiHandler;
 import com.ashindigo.alloycraft.lib.RecipeHandler;
 import com.ashindigo.utils.UtilsAchievement;
+import com.ashindigo.utils.UtilsCreativeTab;
 import com.ashindigo.utils.UtilsMain;
 import com.ashindigo.utils.UtilsMod;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
@@ -61,12 +63,12 @@ public class AlloycraftMain implements UtilsMain {
 			UtilsMod.modidList.add(modid);
 		}
 
-		@Override
 		@EventHandler
 		public void init(FMLInitializationEvent event) {
 			
 			AlloycraftBlocks.initBlocks();
 			AlloycraftItems.initItems();
+			UtilsCreativeTab alloycrafttab = new UtilsCreativeTab("alloycraft", Item.getItemFromBlock(AlloycraftBlocks.forgeoff));
 	    	NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 			GameRegistry.addRecipe(new RecipeHandler());
 			alloyforge = new UtilsAchievement("achievement.alloyforgemade", "alloyforgecrafted", 2, 0, new ItemStack(AlloycraftBlocks.forgeoff), null, "Alloy Forge!", "You made an Alloy Forge!", AlloycraftMain.modid);
@@ -81,7 +83,6 @@ public class AlloycraftMain implements UtilsMain {
 			MinecraftForge.EVENT_BUS.register(new AchievementHandler());
 		}
 
-		@Override
 		@EventHandler
 		public void postinit(FMLPostInitializationEvent event) {
 			
