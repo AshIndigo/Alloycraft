@@ -7,6 +7,8 @@ import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GLContext;
 
+import com.ashindigo.alloycraft.AlloycraftMain;
+
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.creativetab.CreativeTabs;
@@ -28,13 +30,12 @@ public class AlloyItem extends Item {
 	public AlloyItem(String modid, String name){
 		super();
 		setUnlocalizedName(modid + "_" + name);
-		setCreativeTab(CreativeTabs.MISC);
+	    setCreativeTab(AlloycraftMain.alloycrafttab);
 		GameRegistry.register(this, new ResourceLocation(modid, name));
 		maxStackSize = 1;
 }
 	@Override
 	public void onCreated(ItemStack itemstack, World world, EntityPlayer player) {
-		GL11.glColor3d(255, 255, 255);
 	        if (itemstack.getTagCompound() == null)
 	        {
 	            itemstack.setTagCompound(new NBTTagCompound());
@@ -49,14 +50,6 @@ public class AlloyItem extends Item {
 		par3List.add("§4Strength: §7" + Integer.toString(itemStack.getTagCompound().getInteger("Strength")));
 		par3List.add("§2Durability: §7" + Integer.toString(itemStack.getTagCompound().getInteger("Durability")));
 		par3List.add("§1Enchantability: §7" + Integer.toString(itemStack.getTagCompound().getInteger("Enchantability")));
-		}
-	}
-	@Override
-	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-		if (FMLCommonHandler.instance().getSide() == Side.CLIENT) {
-		//GL11.glBegin(0); 
-		GL11.glColor3d(255, 255, 255);
-		//GL11.glEnd();
 		}
 	}
 }

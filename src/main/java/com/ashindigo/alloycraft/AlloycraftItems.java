@@ -1,27 +1,28 @@
 package com.ashindigo.alloycraft;
 
+import java.awt.Color;
+
 import com.ashindigo.alloycraft.items.AlloyAxe;
 import com.ashindigo.alloycraft.items.AlloyHoe;
 import com.ashindigo.alloycraft.items.AlloyItem;
 import com.ashindigo.alloycraft.items.AlloyPickaxe;
 import com.ashindigo.alloycraft.items.AlloyShovel;
 import com.ashindigo.alloycraft.items.AlloySword;
-import com.ashindigo.utils.UtilsItem;
-import com.ashindigo.utils.UtilsItemBlockLoader;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.init.Blocks;
+import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
-// TODO Possibly ingame generated colors for the stats?
+// TODO Null Check for color NBT
+// RIP
 public class AlloycraftItems {
 	
 	public static Item alloy;
@@ -30,6 +31,7 @@ public class AlloycraftItems {
 	public static AlloyPickaxe alloypickaxe;
 	public static AlloyHoe alloyhoe;
 	public static AlloyAxe alloyaxe;
+	public static IItemColor colour;
 	public static ToolMaterial AlloyMat = EnumHelper.addToolMaterial("AlloyMat", 0, 0, 0, 0, 0);
 	
 	public static void preInitItems() {
@@ -45,6 +47,15 @@ public class AlloycraftItems {
 		GameRegistry.addShapelessRecipe(new ItemStack(alloy, 1), new Object[]{
 	    		new ItemStack(Items.GOLD_INGOT, 1), new ItemStack(Items.IRON_INGOT, 1)
 		});
+		colour = new IItemColor() {
+            public int getColorFromItemstack(ItemStack stack, int tintIndex) {
+            	if (stack.getTagCompound() != null) {
+            		return new Color(stack.getTagCompound().getInteger("Strength"), stack.getTagCompound().getInteger("Durability"), stack.getTagCompound().getInteger("Enchantability")).getRGB();
+            	}
+					return 0;
+            	}
+        };
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler(colour, alloy);
 		if(FMLCommonHandler.instance().getSide() == Side.CLIENT) {
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(alloy, 0, new ModelResourceLocation(AlloycraftMain.modid + ":" + "alloy", "inventory"));
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(alloysword, 0, new ModelResourceLocation(AlloycraftMain.modid + ":" + "alloysword", "inventory"));

@@ -2,6 +2,7 @@ package com.ashindigo.alloycraft.items;
 
 import java.util.List;
 
+import com.ashindigo.alloycraft.AlloycraftMain;
 import com.ashindigo.utils.UtilsToolset;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -21,7 +22,7 @@ public class AlloyAxe extends ItemAxe {
 	public AlloyAxe(ToolMaterial material, String name, String modid) {
 		super(material, material.getDamageVsEntity(), 4F);
 		this.setUnlocalizedName(modid + "_" + name);
-	    setCreativeTab(CreativeTabs.COMBAT);
+	    setCreativeTab(AlloycraftMain.alloycrafttab);
 		GameRegistry.register(this, new ResourceLocation(modid, name));
 	}
 	

@@ -2,6 +2,7 @@ package com.ashindigo.alloycraft.items;
 
 import java.util.List;
 
+import com.ashindigo.alloycraft.AlloycraftMain;
 import com.ashindigo.utils.UtilsItem;
 import com.ashindigo.utils.UtilsToolset;
 import com.google.common.collect.Multimap;
@@ -26,7 +27,7 @@ public class AlloySword extends ItemSword {
 	public AlloySword(ToolMaterial material, String name, String modid) {
 		super(material);
 		this.setUnlocalizedName(modid + "_" + name);
-	    setCreativeTab(CreativeTabs.COMBAT);
+	    setCreativeTab(AlloycraftMain.alloycrafttab);
 		GameRegistry.register(this, new ResourceLocation(modid, name));
 	}
 	

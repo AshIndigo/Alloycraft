@@ -2,6 +2,7 @@ package com.ashindigo.alloycraft.items;
 
 import java.util.List;
 
+import com.ashindigo.alloycraft.AlloycraftMain;
 import com.ashindigo.utils.UtilsToolset;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -20,7 +21,7 @@ public class AlloyShovel extends ItemSpade {
 	public AlloyShovel(ToolMaterial material, String name, String modid) {
 		super(material);
 		this.setUnlocalizedName(modid + "_" + name);
-	    setCreativeTab(CreativeTabs.COMBAT);
+	    setCreativeTab(AlloycraftMain.alloycrafttab);
 	    GameRegistry.register(this, new ResourceLocation(modid, name));
 	}
 	

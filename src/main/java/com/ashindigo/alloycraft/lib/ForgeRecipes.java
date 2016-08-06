@@ -14,10 +14,15 @@ public class ForgeRecipes {
 	}	
 	
 	public static ItemStack getOutput(ItemStack item, ItemStack item2) {
-		//  TODO Mess with values
+		//  TODO Mess with values (255 is the max for color)
 		ItemStack itemstack;
 		itemstack = null;
 		itemstack = new ItemStack(AlloycraftItems.alloy, 1);
+		// Base alloy crafting
+		if (item.getItem() == Items.IRON_INGOT && item2.getItem() == Items.GOLD_INGOT || item.getItem() == Items.GOLD_INGOT && item2.getItem() == Items.IRON_INGOT) {
+			itemstack.setTagCompound(new NBTTagCompound());
+			return itemstack;
+		}
 		// Iron Ingot
 		try {
 		if (item.getItem() == Items.IRON_INGOT && item2.getItem() == AlloycraftItems.alloy || item.getItem() == AlloycraftItems.alloy && item2.getItem() == Items.IRON_INGOT) {
@@ -25,11 +30,11 @@ public class ForgeRecipes {
 				   itemstack.setTagCompound(new NBTTagCompound());
 			if (item.getItem() == AlloycraftItems.alloy) {
 				itemstack.getTagCompound().setInteger("Strength", item.getTagCompound().getInteger("Strength"));
-				itemstack.getTagCompound().setInteger("Durability", item.getTagCompound().getInteger("Durability") + 200);
+				itemstack.getTagCompound().setInteger("Durability", item.getTagCompound().getInteger("Durability") + 15);
 				itemstack.getTagCompound().setInteger("Enchantability", item.getTagCompound().getInteger("Enchantability"));
 			} else if (item2.getItem() == AlloycraftItems.alloy) {
 				itemstack.getTagCompound().setInteger("Strength", item2.getTagCompound().getInteger("Strength"));
-				itemstack.getTagCompound().setInteger("Durability", item2.getTagCompound().getInteger("Durability") + 200);
+				itemstack.getTagCompound().setInteger("Durability", item2.getTagCompound().getInteger("Durability") + 15);
 				itemstack.getTagCompound().setInteger("Enchantability", item2.getTagCompound().getInteger("Enchantability"));
 			} 
 			}
@@ -44,11 +49,11 @@ public class ForgeRecipes {
 					if (!itemstack.hasTagCompound()) {
 						   itemstack.setTagCompound(new NBTTagCompound());
 					if (item.getItem() == AlloycraftItems.alloy) {
-						itemstack.getTagCompound().setInteger("Strength", item.getTagCompound().getInteger("Strength") + 200);
+						itemstack.getTagCompound().setInteger("Strength", item.getTagCompound().getInteger("Strength") + 15);
 						itemstack.getTagCompound().setInteger("Durability", item.getTagCompound().getInteger("Durability"));
 						itemstack.getTagCompound().setInteger("Enchantability", item.getTagCompound().getInteger("Enchantability"));
 					} else if (item2.getItem() == AlloycraftItems.alloy) {
-						itemstack.getTagCompound().setInteger("Strength", item2.getTagCompound().getInteger("Strength") + 200);
+						itemstack.getTagCompound().setInteger("Strength", item2.getTagCompound().getInteger("Strength") + 15);
 						itemstack.getTagCompound().setInteger("Durability", item2.getTagCompound().getInteger("Durability"));
 						itemstack.getTagCompound().setInteger("Enchantability", item2.getTagCompound().getInteger("Enchantability"));
 					} 
@@ -66,11 +71,11 @@ public class ForgeRecipes {
 				if (item.getItem() == AlloycraftItems.alloy) {
 					itemstack.getTagCompound().setInteger("Strength", item.getTagCompound().getInteger("Strength"));
 					itemstack.getTagCompound().setInteger("Durability", item.getTagCompound().getInteger("Durability"));
-					itemstack.getTagCompound().setInteger("Enchantability", item.getTagCompound().getInteger("Enchantability") + 200);
+					itemstack.getTagCompound().setInteger("Enchantability", item.getTagCompound().getInteger("Enchantability") + 15);
 				} else if (item2.getItem() == AlloycraftItems.alloy) {
 					itemstack.getTagCompound().setInteger("Strength", item2.getTagCompound().getInteger("Strength"));
 					itemstack.getTagCompound().setInteger("Durability", item2.getTagCompound().getInteger("Durability"));
-					itemstack.getTagCompound().setInteger("Enchantability", item2.getTagCompound().getInteger("Enchantability") + 200);
+					itemstack.getTagCompound().setInteger("Enchantability", item2.getTagCompound().getInteger("Enchantability") + 15);
 				}
 				}
 			return itemstack;

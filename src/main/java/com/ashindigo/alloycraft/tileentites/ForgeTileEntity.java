@@ -2,8 +2,6 @@ package com.ashindigo.alloycraft.tileentites;
 
 import com.ashindigo.alloycraft.blocks.ForgeBlock;
 import com.ashindigo.alloycraft.lib.ForgeRecipes;
-
-import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
@@ -23,8 +21,9 @@ public class ForgeTileEntity extends TileEntity implements ISidedInventory, ITic
 	
 	public int dualPower;
 	public int dualCookTime;
+	// TODO Config for max power and speed?
 	public final int maxPower = 32000;
-	public final int smeltingSpeed = 500;
+	public final int smeltingSpeed = 1;
 	private final int[] slots_top = new int[] {0, 1};
 	private final int[] slots_bottom = new int[] {3};
 	private final int[] slots_side = new int[] {2};

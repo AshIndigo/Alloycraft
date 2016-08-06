@@ -53,6 +53,8 @@ public class AlloycraftMain implements UtilsMain {
 		public static final int guiIDForge = 1;
 		public static final int guiIDForgeTesla = 2;
 		
+		public static UtilsCreativeTab alloycrafttab;
+		
 		public static AchievementPage alloyCraftPage;
 		
 		@EventHandler
@@ -68,7 +70,7 @@ public class AlloycraftMain implements UtilsMain {
 			
 			AlloycraftBlocks.initBlocks();
 			AlloycraftItems.initItems();
-			UtilsCreativeTab alloycrafttab = new UtilsCreativeTab("alloycraft", Item.getItemFromBlock(AlloycraftBlocks.forgeoff));
+			alloycrafttab = new UtilsCreativeTab("alloycraft", Item.getItemFromBlock(AlloycraftBlocks.forgeoff));
 	    	NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 			GameRegistry.addRecipe(new RecipeHandler());
 			alloyforge = new UtilsAchievement("achievement.alloyforgemade", "alloyforgecrafted", 2, 0, new ItemStack(AlloycraftBlocks.forgeoff), null, "Alloy Forge!", "You made an Alloy Forge!", AlloycraftMain.modid);

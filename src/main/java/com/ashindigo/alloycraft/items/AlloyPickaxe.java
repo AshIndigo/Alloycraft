@@ -2,6 +2,8 @@ package com.ashindigo.alloycraft.items;
 
 import java.util.List;
 
+import com.ashindigo.alloycraft.AlloycraftMain;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -18,7 +20,7 @@ public class AlloyPickaxe extends ItemPickaxe {
 	public AlloyPickaxe(ToolMaterial material, String name, String modid) {
 		super(material);
 		this.setUnlocalizedName(modid + "_" + name);
-	    setCreativeTab(CreativeTabs.COMBAT);
+	    setCreativeTab(AlloycraftMain.alloycrafttab);
 	    GameRegistry.register(this, new ResourceLocation(modid, name));
 	}
 	@Override
