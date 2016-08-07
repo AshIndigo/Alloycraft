@@ -8,7 +8,6 @@ import com.ashindigo.utils.UtilsAchievement;
 import com.ashindigo.utils.UtilsCreativeTab;
 import com.ashindigo.utils.UtilsMain;
 import com.ashindigo.utils.UtilsMod;
-
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
@@ -26,6 +25,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 // TODO Add armor pieces
+// TODO In-Game GUI Config editor?
 @Mod(modid = AlloycraftMain.modid, version = "1.0", name = "Alloycraft")
 public class AlloycraftMain implements UtilsMain {
 	

@@ -1,7 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {  	
-        "layer0": "alloycraft:items/alloyshovel",
-        "layer1": "alloycraft:items/alloyshovel_overlay"
+        "layer0": "minecraft:items/iron_shovel"
     }
 }

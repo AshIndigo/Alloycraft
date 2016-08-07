@@ -21,3 +21,7 @@ achievement.alloyswordcrafted.desc=Crafted an Alloy Sword
 achievement.alloyshovelcrafted=Alloy Shovel
 achievement.alloyshovelcrafted.desc=Crafted an Alloy Shovel
 itemGroup.alloycraft=Alloycraft
+item.alloycraft_alloyhelm.name=Alloy Helmet
+item.alloycraft_alloychestplate.name=Alloy Chestplate
+item.alloycraft_alloyleggings.name=Alloy Leggings
+item.alloycraft_alloyboots.name=Alloy Boots

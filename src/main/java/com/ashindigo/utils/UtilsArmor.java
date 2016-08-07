@@ -60,6 +60,7 @@ public class UtilsArmor extends ItemArmor {
 	    super(material, 0, type);
 	    GameRegistry.register(this, new ResourceLocation(modid, name));
 	    textureName = name;
+	    maxStackSize = 1;
 	    this.setUnlocalizedName(modid + "_" + name);
 	    setCreativeTab(CreativeTabs.COMBAT);
 	    canRepair = true;
@@ -145,8 +146,6 @@ public class UtilsArmor extends ItemArmor {
 	/**
 	 * Armor texture method
 	 */
-	// TODO Fix? Or is already fixed thanks to 1.10.2
-	// Fixed?
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
 	    return MODID + ":armor/" + textureName + "_" + (armorType.getSlotIndex() == 2 ? "2" : "1") + ".png";

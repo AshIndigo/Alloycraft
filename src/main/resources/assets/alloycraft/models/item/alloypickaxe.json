@@ -1,7 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {  	
-        "layer0": "alloycraft:items/alloypickaxe",
-        "layer1": "alloycraft:items/alloypickaxe_overlay"
+        "layer0": "minecraft:items/iron_pickaxe"
     }
 }

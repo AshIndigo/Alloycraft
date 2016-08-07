@@ -1,29 +1,14 @@
 package com.ashindigo.alloycraft.items;
 
-import java.awt.Color;
 import java.util.List;
-
-import org.lwjgl.LWJGLException;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GLContext;
-
 import com.ashindigo.alloycraft.AlloycraftMain;
-
-import net.minecraft.client.renderer.color.IItemColor;
-import net.minecraft.client.renderer.color.ItemColors;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
 
 public class AlloyItem extends Item {
 	

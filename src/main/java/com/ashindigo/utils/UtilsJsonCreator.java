@@ -15,13 +15,6 @@ public class UtilsJsonCreator {
 	static FileWriter fw;
 	static BufferedWriter bw;
 	static File mainloc = new File(configFolder.getParentFile().getParentFile() + "/src/main/resources/assets");
-//	static int runtime1 = 0;
-//	static int runtime2 = 0;
-//	static int runtime3 = 0;
-//	static int runtime4 = 0;
-//	static int runtime5 = 0;
-//	static int runtime6 = 0;
-//	static int multiplier = 0;
 	static File helmItemJson;
 	static File chestItemJson;
 	static File legItemJson;

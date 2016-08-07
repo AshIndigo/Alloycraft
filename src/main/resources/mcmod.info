@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "alloycraft",
+  "name": "Alloycraft",
+  "description": "A mod about combining metals to make powerful tools and armor",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["AshIndigo"],
+  "credits": "People on the Forge forums for putting up with my issues",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

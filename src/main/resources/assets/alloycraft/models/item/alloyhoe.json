@@ -1,7 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {  	
-        "layer0": "alloycraft:items/alloyhoe",
-        "layer1": "alloycraft:items/alloyhoe_overlay"
+        "layer0": "minecraft:items/iron_hoe"
     }
 }

@@ -15,6 +15,7 @@ import net.minecraftforge.common.ForgeHooks;
  * @author Ash
  *
  */
+// TODO Finish recipes for armor
 // TODO Dont use square root? (Divide by numb of ingots?)
 public class RecipeHandler implements IRecipe {
 
@@ -82,6 +83,23 @@ public class RecipeHandler implements IRecipe {
 			if(invCraft.getStackInSlot(1).getItem() == AlloycraftItems.alloy) {
 				if(invCraft.getStackInSlot(4).getItem() == Items.STICK) {
 					if(invCraft.getStackInSlot(7).getItem() == Items.STICK) {
+						return true;
+					}
+				}
+			}
+			} catch (Exception e) {
+				
+			}
+		// Helmet
+		try {
+			if(invCraft.getStackInSlot(0).getItem() == AlloycraftItems.alloy) {
+				if(invCraft.getStackInSlot(1).getItem() == AlloycraftItems.alloy) {
+					if(invCraft.getStackInSlot(2).getItem() == AlloycraftItems.alloy) {
+						if(invCraft.getStackInSlot(3).getItem() == AlloycraftItems.alloy) {
+							if(invCraft.getStackInSlot(5).getItem() == AlloycraftItems.alloy) {
+								return true;
+							}
+						}
 						return true;
 					}
 				}
@@ -212,6 +230,35 @@ public class RecipeHandler implements IRecipe {
 				} catch (Exception e) {
 					//e.printStackTrace();
 				}
+				// Helmet
+				try {
+					if(invCraft.getStackInSlot(0).getItem() == AlloycraftItems.alloy) {
+						if(invCraft.getStackInSlot(1).getItem() == AlloycraftItems.alloy) {
+							if(invCraft.getStackInSlot(2).getItem() == AlloycraftItems.alloy) {
+								if(invCraft.getStackInSlot(3).getItem() == AlloycraftItems.alloy) {
+									if(invCraft.getStackInSlot(5).getItem() == AlloycraftItems.alloy) {
+										ItemStack alloy1 = invCraft.getStackInSlot(0);
+										ItemStack alloy2 = invCraft.getStackInSlot(1);
+										ItemStack alloy3 = invCraft.getStackInSlot(2);
+										ItemStack alloy4 = invCraft.getStackInSlot(3);
+										ItemStack alloy5 = invCraft.getStackInSlot(5);
+										int prop1 = (int) Math.sqrt(alloy1.getTagCompound().getInteger("Strength") + alloy2.getTagCompound().getInteger("Strength") + alloy3.getTagCompound().getInteger("Strength") + alloy4.getTagCompound().getInteger("Strength") + alloy5.getTagCompound().getInteger("Strength"));
+										int prop2 = (int) Math.sqrt(alloy1.getTagCompound().getInteger("Durability") + alloy2.getTagCompound().getInteger("Durability") + alloy3.getTagCompound().getInteger("Durability") + alloy4.getTagCompound().getInteger("Durability") + alloy5.getTagCompound().getInteger("Durability"));
+										int prop3 = (int) Math.sqrt(alloy1.getTagCompound().getInteger("Enchantability") + alloy2.getTagCompound().getInteger("Enchantability") + alloy3.getTagCompound().getInteger("Enchantability") + alloy4.getTagCompound().getInteger("Enchantability") + alloy5.getTagCompound().getInteger("Enchantability"));
+										result = new ItemStack(AlloycraftItems.alloyhelmet, 1);
+										result.setTagCompound(new NBTTagCompound());
+										result.getTagCompound().setInteger("Strength", prop1);
+										result.getTagCompound().setInteger("Durability", prop2);
+										result.getTagCompound().setInteger("Enchantability", prop3); 
+										return result;
+									}
+								}
+							}
+						}
+					}
+					} catch (Exception e) {
+						
+					}
 		return null;
 		}
 
