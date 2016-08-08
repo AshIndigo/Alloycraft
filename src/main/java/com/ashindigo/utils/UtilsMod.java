@@ -22,6 +22,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  */
 // TODO Add fluid JSON
 // TODO Add Crop Support
+// TODO Utils In-game config menu support
 @Mod(modid = "indigoutils", version = "1.0", name = "IndigoUtils")
 public class UtilsMod implements UtilsMain {
 	

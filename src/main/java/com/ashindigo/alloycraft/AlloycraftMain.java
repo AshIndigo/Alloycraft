@@ -1,6 +1,5 @@
 package com.ashindigo.alloycraft;
 
-import com.ashindigo.alloycraft.lib.AchievementHandler;
 import com.ashindigo.alloycraft.lib.CommonProxy;
 import com.ashindigo.alloycraft.lib.GuiHandler;
 import com.ashindigo.alloycraft.lib.RecipeHandler;
@@ -8,12 +7,19 @@ import com.ashindigo.utils.UtilsAchievement;
 import com.ashindigo.utils.UtilsCreativeTab;
 import com.ashindigo.utils.UtilsMain;
 import com.ashindigo.utils.UtilsMod;
+
+import net.minecraft.block.Block;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.fml.client.config.GuiConfig;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -24,9 +30,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-// TODO Add armor pieces
-// TODO In-Game GUI Config editor?
-@Mod(modid = AlloycraftMain.modid, version = "1.0", name = "Alloycraft")
+// TODO Add armor color
+@Mod(modid = AlloycraftMain.modid, version = "1.0", name = "Alloycraft", guiFactory = "com.ashindigo.alloycraft.lib.GuiFactory")
 public class AlloycraftMain implements UtilsMain {
 	
 	public static final String modid = "alloycraft";
@@ -61,9 +66,7 @@ public class AlloycraftMain implements UtilsMain {
 		public void preinit(FMLPreInitializationEvent event) {
 			
 			config = new Configuration(event.getSuggestedConfigurationFile());
-			smeltingSpeed = config.getInt("Smelting Speed", "default", 50, 1, Integer.MAX_VALUE, "Controls how fast the Alloy Forge smelts");
-			maxPower = config.getInt("Max Power", "default", 32000, 1, Integer.MAX_VALUE, "How much power can the Alloy Forge hold");
-			config.save();
+			syncConfig();
 			AlloycraftItems.preInitItems();
 			AlloycraftBlocks.preInitBlocks();
 			UtilsMod.modidList.add(modid);
@@ -74,6 +77,7 @@ public class AlloycraftMain implements UtilsMain {
 			
 			AlloycraftBlocks.initBlocks();
 			AlloycraftItems.initItems();
+			GameRegistry.addShapelessRecipe(new ItemStack(AlloycraftItems.alloyhelmet), new Block[]{Blocks.DIRT});
 			alloycrafttab = new UtilsCreativeTab("alloycraft", Item.getItemFromBlock(AlloycraftBlocks.forgeoff));
 	    	NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 			GameRegistry.addRecipe(new RecipeHandler());
@@ -86,7 +90,7 @@ public class AlloycraftMain implements UtilsMain {
 			alloyshovel = new UtilsAchievement("achievement.alloyshovelmade", "alloyshovelcrafted", 4, 2, new ItemStack(AlloycraftItems.alloyshovel), alloy, "Alloy Shovel", "Crafted an Alloy Shovel", AlloycraftMain.modid);
 			alloyCraftPage = new AchievementPage("Alloycraft" ,new Achievement[]{alloyforge, alloy, alloypick, alloyhoe, alloyaxe, alloyshovel, alloysword});
 			AchievementPage.registerAchievementPage(alloyCraftPage);
-			MinecraftForge.EVENT_BUS.register(new AchievementHandler());
+			MinecraftForge.EVENT_BUS.register(new com.ashindigo.alloycraft.lib.EventHandler());
 		}
 
 		@EventHandler
@@ -94,6 +98,13 @@ public class AlloycraftMain implements UtilsMain {
 			
 			AlloycraftItems.postInitItems();
 			AlloycraftBlocks.postInitBlocks();
+		}
+		
+		//Config Manager
+		public static void syncConfig() {
+			smeltingSpeed = config.getInt("Smelting Speed", "general", 50, 1, Integer.MAX_VALUE, "Controls how fast the Alloy Forge smelts");
+			maxPower = config.getInt("Max Power", "general", 32000, 1, Integer.MAX_VALUE, "How much power can the Alloy Forge hold");
+			config.save();
 		}
 
 

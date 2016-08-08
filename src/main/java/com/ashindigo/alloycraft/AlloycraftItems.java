@@ -17,7 +17,7 @@ import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 
-// RIP XXX	
+// XXX RIP 
 public class AlloycraftItems {
 	
 	public static Item alloy;

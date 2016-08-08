@@ -6,7 +6,6 @@ import java.util.List;
 import com.ashindigo.alloycraft.AlloycraftMain;
 import com.ashindigo.utils.UtilsArmor;
 
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,10 +21,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
 // TODO Add wearing color
-// Note: Is it loading the overlay texture for iron armor which doesnt exist?
 public class AlloyArmor extends ItemArmor {
 
-	// TODO Rip material
 	public AlloyArmor(String name, ArmorMaterial material, EntityEquipmentSlot type, String modid) {
 	    super(ItemArmor.ArmorMaterial.LEATHER, 0, type);
 		setCreativeTab(AlloycraftMain.alloycrafttab);
@@ -36,8 +33,9 @@ public class AlloyArmor extends ItemArmor {
 	
 	@Override
 	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
-        //GlStateManager.color(stack.getTagCompound().getInteger("Strength"), stack.getTagCompound().getInteger("Durability"), stack.getTagCompound().getInteger("Enchantability"), 1.0F);
-		//this.setColor(stack, new Color(stack.getTagCompound().getInteger("Strength"), stack.getTagCompound().getInteger("Durability"), stack.getTagCompound().getInteger("Enchantability")).getRGB());    
+       // stack.getTagCompound().getInteger("Strength"), stack.getTagCompound().getInteger("Durability"), stack.getTagCompound().getInteger("Enchantability")
+		((ItemArmor) stack.getItem()).setColor(stack, 0x000000);    
+		System.out.println(this.getColor(stack));
 		if (stack.getTagCompound() == null) {
 				stack.setTagCompound(new NBTTagCompound());
 				stack.getTagCompound().setInteger("Durability", 0);
@@ -58,15 +56,4 @@ public class AlloyArmor extends ItemArmor {
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
 	    return "textures/models/armor/" + "leather_layer" + "_" + (armorType.getSlotIndex() == 2 ? "2" : "1") + ".png";
 	}
-	
-	@Override
-	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-		if (FMLCommonHandler.instance().getSide() == Side.CLIENT) {
-		if (stack != null && stack.getTagCompound() != null && itemSlot == EntityEquipmentSlot.HEAD.getIndex()) {
-			//System.out.println("How");
-			this.setColor(stack, new Color(stack.getTagCompound().getInteger("Strength"), stack.getTagCompound().getInteger("Durability"), stack.getTagCompound().getInteger("Enchantability")).getRGB());
-		}
-		}
-    }
-
 }

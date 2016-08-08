@@ -5,10 +5,15 @@ import com.ashindigo.alloycraft.AlloycraftItems;
 import com.ashindigo.alloycraft.AlloycraftMain;
 
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 
-public class AchievementHandler {
+public class EventHandler {
+	
+	public EventHandler() {
+		super();
+	}
 
 	@SubscribeEvent
 	public void onCrafted(ItemCraftedEvent event) {
@@ -34,4 +39,10 @@ public class AchievementHandler {
 			event.player.addStat(AlloycraftMain.alloyhoe);
 		}
 	}
+	
+	  @SubscribeEvent
+	  public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
+	    if(eventArgs.getModID().equals("alloycraft"))
+	     AlloycraftMain.syncConfig();
+	  }
 }
