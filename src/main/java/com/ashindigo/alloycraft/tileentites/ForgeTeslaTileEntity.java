@@ -108,8 +108,8 @@ public class ForgeTeslaTileEntity extends TileEntity implements ISidedInventory,
 			return null;
 		}
 	}
-	
-	public void readFromNBT (NBTTagCompound nbt) {
+	@Override
+	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
 		NBTTagList list = nbt.getTagList("Items", 10);
 		slots = new ItemStack[getSizeInventory()];
@@ -127,6 +127,7 @@ public class ForgeTeslaTileEntity extends TileEntity implements ISidedInventory,
 		dualCookTime = nbt.getShort("CookTime");
 	}
 	
+	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
 		nbt.setShort("PowerTime", (short)dualPower);

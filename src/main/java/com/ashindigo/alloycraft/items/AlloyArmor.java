@@ -34,7 +34,21 @@ public class AlloyArmor extends ItemArmor {
 	@Override
 	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
        // stack.getTagCompound().getInteger("Strength"), stack.getTagCompound().getInteger("Durability"), stack.getTagCompound().getInteger("Enchantability")
-		((ItemArmor) stack.getItem()).setColor(stack, 0x000000);    
+		((ItemArmor) stack.getItem()).setColor(stack, 0xEEEEEE);    
+		  int i = this.getColor(stack);
+              if (i != 0xFFFFFF) // Allow this for anything, not only cloth
+              {
+            	  System.out.println("Not 0xFFFFFF");
+            	     float f = (float)(i >> 16 & 255) / 255.0F;
+                     float f1 = (float)(i >> 8 & 255) / 255.0F;
+                     float f2 = (float)(i & 255) / 255.0F;
+                     System.out.println(f);
+                     System.out.println(f1);
+                     System.out.println(f2);
+                     System.out.println(1.0F * f);
+                     System.out.println(1.0F * f1);
+                     System.out.println(1.0F * f2);
+              }
 		System.out.println(this.getColor(stack));
 		if (stack.getTagCompound() == null) {
 				stack.setTagCompound(new NBTTagCompound());

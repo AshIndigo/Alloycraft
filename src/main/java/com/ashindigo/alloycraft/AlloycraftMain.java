@@ -14,6 +14,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
+import net.minecraft.util.registry.RegistrySimple;
 import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.ConfigElement;
@@ -37,7 +38,7 @@ public class AlloycraftMain implements UtilsMain {
 	public static final String modid = "alloycraft";
 	public final static String CLIENT_PROXY_CLASS = "com.ashindigo.alloycraft.lib.ClientProxy";
 	public final static String SERVER_PROXY_CLASS = "com.ashindigo.alloycraft.lib.CommonProxy";
-	// Achievements are long!
+	// XXX Achievements are long!
 	public static UtilsAchievement alloyforge;
 	public static UtilsAchievement alloy;
 	public static UtilsAchievement alloyaxe;
