@@ -34,7 +34,8 @@ public class AlloyArmor extends ItemArmor {
 	@Override
 	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
        // stack.getTagCompound().getInteger("Strength"), stack.getTagCompound().getInteger("Durability"), stack.getTagCompound().getInteger("Enchantability")
-		((ItemArmor) stack.getItem()).setColor(stack, 0xEEEEEE);    
+		//((ItemArmor) stack.getItem()).setColor(stack, 25555555);    
+		((ItemArmor) stack.getItem()).setColor(stack, 25555555);    
 		  int i = this.getColor(stack);
               if (i != 0xFFFFFF) // Allow this for anything, not only cloth
               {
