@@ -295,6 +295,7 @@ public class RecipeHandler implements IRecipe {
 										+ alloy4.getTagCompound().getInteger("Enchantability")
 										+ alloy5.getTagCompound().getInteger("Enchantability"));
 								result = new ItemStack(AlloycraftItems.alloyhelmet, 1);
+								((ItemArmor) result.getItem()).setColor(result, 25555555);    
 								result.setTagCompound(new NBTTagCompound());
 								result.getTagCompound().setInteger("Strength", prop1);
 								result.getTagCompound().setInteger("Durability", prop2);
