@@ -34,7 +34,6 @@ public class AlloyArmor extends ItemArmor {
 	@Override
 	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
        // stack.getTagCompound().getInteger("Strength"), stack.getTagCompound().getInteger("Durability"), stack.getTagCompound().getInteger("Enchantability")
-<<<<<<< HEAD
 		((ItemArmor) stack.getItem()).setColor(stack, new Color( stack.getTagCompound().getInteger("Strength"), stack.getTagCompound().getInteger("Durability"), stack.getTagCompound().getInteger("Enchantability")).getRGB());    
 		   if ( ((ItemArmor) stack.getItem()).hasOverlay(stack)) // Allow this for anything, not only cloth
            {
@@ -43,17 +42,6 @@ public class AlloyArmor extends ItemArmor {
                float f1 = (float)(i >> 8 & 255) / 255.0F;
                float f2 = (float)(i & 255) / 255.0F;
                System.out.println("Has Overlay!");
-=======
-		//((ItemArmor) stack.getItem()).setColor(stack, 25555555);    
-		((ItemArmor) stack.getItem()).setColor(stack, 25555555);    
-		  int i = this.getColor(stack);
-              if (i != 0xFFFFFF) // Allow this for anything, not only cloth
-              {
-            	  System.out.println("Not 0xFFFFFF");
-            	     float f = (float)(i >> 16 & 255) / 255.0F;
-                     float f1 = (float)(i >> 8 & 255) / 255.0F;
-                     float f2 = (float)(i & 255) / 255.0F;
->>>>>>> origin/master
                      System.out.println(f);
                      System.out.println(f1);
                      System.out.println(f2);
