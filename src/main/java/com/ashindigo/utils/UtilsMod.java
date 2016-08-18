@@ -101,7 +101,7 @@ public class UtilsMod implements UtilsMain {
 	 * @param modid The modid of a mod
 	 * @param configFolder The config folder
 	 */
-	@Deprecated
+	@Deprecated // This will end up breaking the config if this is called. Possibly should just scrap	
 	public static void addModReg(String modid, String configFolder) {
 		try {
 			File modfileOld = new File(configFolder);

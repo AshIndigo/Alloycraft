@@ -1,8 +1,6 @@
 package com.ashindigo.alloycraft.lib;
 
 import com.ashindigo.alloycraft.tileentites.ForgeTeslaTileEntity;
-import com.ashindigo.utils.UtilsSlot;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -28,7 +26,7 @@ public class ForgeTeslaContainer extends Container {
 		this.addSlotToContainer(new Slot(teAlloyFurnace, 0, 45, 17));
 		this.addSlotToContainer(new Slot(teAlloyFurnace, 1, 45, 49));
 		this.addSlotToContainer(new Slot(teAlloyFurnace, 2, 8, 56));
-		this.addSlotToContainer(new UtilsSlot(invPlayer.player, teAlloyFurnace, 3, 113, 33));
+		this.addSlotToContainer(new Slot(teAlloyFurnace, 3, 113, 33));
 		
 		//Inventory
 		for(int i = 0; i < 3; i++) {

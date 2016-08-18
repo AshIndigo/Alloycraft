@@ -42,11 +42,9 @@ public class ForgeTeslaBlock extends BlockContainer {
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 	public static final PropertyBool ACTIVE = PropertyBool.create("active");
 	private static boolean keepInventory;
-	boolean isSmelting;
 
 	public ForgeTeslaBlock(String modid, String name) {
 		super(Material.IRON);
-		isSmelting = false;
 		setUnlocalizedName(name);
 		setHardness(3);
 		setCreativeTab(AlloycraftMain.alloycrafttab);

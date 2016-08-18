@@ -19,6 +19,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -46,13 +47,7 @@ public class AlloySword extends ItemSword {
 			return 0;
 		}
 	}
-	// TODO Need an ItemStack parameter for this to work
-	/*
-	@Override
-	public float getDamageVsEntity () {
-		return itemstack.getTagCompound().getInteger("Strength");
-	}
-	*/
+	
 	@Override
 	public int getItemEnchantability(ItemStack itemstack) {
 		if (itemstack.getTagCompound() != null) {
@@ -71,13 +66,12 @@ public class AlloySword extends ItemSword {
 	            itemstack.getTagCompound().setInteger("Strength", 0);
 	        }
 	}
-	public void addInformation(ItemStack itemstack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-		if (itemstack.getTagCompound() != null) {
-			par3List.add("§4Strength: §7" + Integer.toString(itemstack.getTagCompound().getInteger("Strength")));
-			par3List.add("§2Durability: §7" + Integer.toString(itemstack.getTagCompound().getInteger("Durability")));
-			par3List.add("§1Enchantability: §7" + Integer.toString(itemstack.getTagCompound().getInteger("Enchantability")));
-		} else {
-			par3List.add("This weapon is missing it's NBT data please delete this or bad things can possibly happen!");
+
+	public void addInformation(ItemStack itemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+		if (itemStack.getTagCompound() != null) {
+		par3List.add(TextFormatting.RED + "Strength: " + TextFormatting.GRAY + Integer.toString(itemStack.getTagCompound().getInteger("Strength")));
+		par3List.add(TextFormatting.GREEN + "Durability: " + TextFormatting.GRAY + Integer.toString(itemStack.getTagCompound().getInteger("Durability")));
+		par3List.add(TextFormatting.BLUE + "Enchantability: " + TextFormatting.GRAY + Integer.toString(itemStack.getTagCompound().getInteger("Enchantability")));
 		}
-		}
+	}
 	}

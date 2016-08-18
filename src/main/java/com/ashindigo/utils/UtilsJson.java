@@ -9,6 +9,7 @@ import java.lang.annotation.Target;
  * Annotation to mark a mod for Auto-Json creation (Or some other use)
  * @author Ash Indigo
  */
+@Deprecated // May be scraped
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface UtilsJson {

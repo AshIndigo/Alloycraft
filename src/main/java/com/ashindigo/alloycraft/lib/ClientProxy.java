@@ -5,10 +5,10 @@ import java.awt.Color;
 import com.ashindigo.alloycraft.AlloycraftItems;
 import com.ashindigo.alloycraft.AlloycraftMain;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.relauncher.Side;
 
 public class ClientProxy extends CommonProxy {
 	
@@ -24,18 +24,18 @@ public class ClientProxy extends CommonProxy {
 				return new Color(255,255,255).getRGB();
         	}
     };
-    net.minecraft.client.Minecraft.getMinecraft().getItemColors().registerItemColorHandler(colour, new Item[] {AlloycraftItems.alloy, AlloycraftItems.alloysword, AlloycraftItems.alloyaxe, AlloycraftItems.alloyhoe, AlloycraftItems.alloyshovel, AlloycraftItems.alloypickaxe, AlloycraftItems.alloyhelmet, AlloycraftItems.alloychestplate, AlloycraftItems.alloyleggings, AlloycraftItems.alloyboots});
-		//XXX Its like a forge patch! 
-		net.minecraft.client.Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(AlloycraftItems.alloy, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloy", "inventory"));
-		net.minecraft.client.Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(AlloycraftItems.alloysword, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloysword", "inventory"));
-		net.minecraft.client.Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(AlloycraftItems.alloyaxe, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloyaxe", "inventory"));
-		net.minecraft.client.Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(AlloycraftItems.alloyhoe, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloyhoe", "inventory"));
-		net.minecraft.client.Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(AlloycraftItems.alloyshovel, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloyshovel", "inventory"));
-		net.minecraft.client.Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(AlloycraftItems.alloypickaxe, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloypickaxe", "inventory"));
-		net.minecraft.client.Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(AlloycraftItems.alloyhelmet, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloyhelm", "inventory"));
-		net.minecraft.client.Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(AlloycraftItems.alloychestplate, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloychestplate", "inventory"));
-		net.minecraft.client.Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(AlloycraftItems.alloyleggings, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloyleggings", "inventory"));
-		net.minecraft.client.Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(AlloycraftItems.alloyboots, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloyboots", "inventory"));
+    	Minecraft.getMinecraft().getItemColors().registerItemColorHandler(colour, new Item[] {AlloycraftItems.alloy, AlloycraftItems.alloysword, AlloycraftItems.alloyaxe, AlloycraftItems.alloyhoe, AlloycraftItems.alloyshovel, AlloycraftItems.alloypickaxe, AlloycraftItems.alloyhelmet, AlloycraftItems.alloychestplate, AlloycraftItems.alloyleggings, AlloycraftItems.alloyboots});
+    	ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
+		mesher.register(AlloycraftItems.alloy, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloy", "inventory"));
+		mesher.register(AlloycraftItems.alloysword, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloysword", "inventory"));
+		mesher.register(AlloycraftItems.alloyaxe, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloyaxe", "inventory"));
+		mesher.register(AlloycraftItems.alloyhoe, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloyhoe", "inventory"));
+		mesher.register(AlloycraftItems.alloyshovel, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloyshovel", "inventory"));
+		mesher.register(AlloycraftItems.alloypickaxe, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloypickaxe", "inventory"));
+		mesher.register(AlloycraftItems.alloyhelmet, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloyhelm", "inventory"));
+		mesher.register(AlloycraftItems.alloychestplate, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloychestplate", "inventory"));
+		mesher.register(AlloycraftItems.alloyleggings, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloyleggings", "inventory"));
+		mesher.register(AlloycraftItems.alloyboots, 0, new net.minecraft.client.renderer.block.model.ModelResourceLocation(AlloycraftMain.modid + ":" + "alloyboots", "inventory"));
 	}
 }
 	

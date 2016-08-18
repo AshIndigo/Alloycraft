@@ -10,7 +10,7 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.config.GuiConfig;
 import net.minecraftforge.fml.client.config.IConfigElement;
 
-// XXX There has to be way to use this without a seperate class
+// XXX There has to be way to use this without a separate class
 public class AlloycraftGuiConfig extends GuiConfig {
 
 	public AlloycraftGuiConfig(GuiScreen parentScreen, List<IConfigElement> configElements, String modID,

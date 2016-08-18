@@ -13,10 +13,10 @@ import net.minecraftforge.common.ForgeHooks;
 
 /**
  * 
- * @author Ash
+ * @author Ash Indigo
  *
  */
-// TODO Finish recipes for armor
+// TODO Re-Write? (This is ungodly messy and is clouded with IF statements)
 // TODO Dont use square root? (Divide by numb of ingots?)
 public class RecipeHandler implements IRecipe {
 
@@ -37,7 +37,7 @@ public class RecipeHandler implements IRecipe {
 					}
 				}
 			}
-		} catch (Exception e) {
+		} catch (NullPointerException e) {
 			// e.printStackTrace();
 		}
 		// Sword
@@ -49,7 +49,7 @@ public class RecipeHandler implements IRecipe {
 					}
 				}
 			}
-		} catch (Exception e) {
+		} catch (NullPointerException e) {
 		}
 		// Hoe
 		try {
@@ -62,8 +62,8 @@ public class RecipeHandler implements IRecipe {
 					}
 				}
 			}
-		} catch (Exception e) {
-
+		} catch (NullPointerException e) {
+			
 		}
 		// Hoe
 		try {
@@ -76,7 +76,7 @@ public class RecipeHandler implements IRecipe {
 					}
 				}
 			}
-		} catch (Exception e) {
+		} catch (NullPointerException e) {
 
 		}
 		// Shovel
@@ -88,7 +88,7 @@ public class RecipeHandler implements IRecipe {
 					}
 				}
 			}
-		} catch (Exception e) {
+		} catch (NullPointerException e) {
 
 		}
 		// Helmet
@@ -104,7 +104,7 @@ public class RecipeHandler implements IRecipe {
 					}
 				}
 			}
-		} catch (Exception e) {
+		} catch (NullPointerException e) {
 
 		}
 		// Chestplate
@@ -126,16 +126,50 @@ public class RecipeHandler implements IRecipe {
 					}
 				}
 			}
-		} catch (Exception e) {
+		} catch (NullPointerException e) {
 
 		}
+		// Leggings
+		try {
+			if (invCraft.getStackInSlot(0).getItem() == AlloycraftItems.alloy) {
+				if (invCraft.getStackInSlot(1).getItem() == AlloycraftItems.alloy) {
+					if (invCraft.getStackInSlot(2).getItem() == AlloycraftItems.alloy) {
+						if (invCraft.getStackInSlot(3).getItem() == AlloycraftItems.alloy) {
+							if (invCraft.getStackInSlot(5).getItem() == AlloycraftItems.alloy) {
+								if (invCraft.getStackInSlot(6).getItem() == AlloycraftItems.alloy) {
+									if (invCraft.getStackInSlot(8).getItem() == AlloycraftItems.alloy) {
+										return true;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		} catch (NullPointerException e) {
+
+		}
+		// Boots
+				try {
+					if (invCraft.getStackInSlot(0).getItem() == AlloycraftItems.alloy) {
+							if (invCraft.getStackInSlot(2).getItem() == AlloycraftItems.alloy) {
+								if (invCraft.getStackInSlot(3).getItem() == AlloycraftItems.alloy) {
+									if (invCraft.getStackInSlot(5).getItem() == AlloycraftItems.alloy) {
+										return true;
+									}
+								}
+							}
+						}
+				} catch (NullPointerException e) {
+
+				}
 		return false;
 	}
 
 	@Override
 	public ItemStack getCraftingResult(InventoryCrafting invCraft) {
-		try {
 			// Pickaxe
+		try {
 			if (invCraft.getStackInSlot(0).getItem() == AlloycraftItems.alloy) {
 				if (invCraft.getStackInSlot(1).getItem() == AlloycraftItems.alloy) {
 					if (invCraft.getStackInSlot(2).getItem() == AlloycraftItems.alloy) {
@@ -164,9 +198,9 @@ public class RecipeHandler implements IRecipe {
 					}
 				}
 			}
-		} catch (Exception e) {
-			// e.printStackTrace();
-		}
+			} catch (NullPointerException e) {
+				
+			}
 		// Sword
 		try {
 			if (invCraft.getStackInSlot(1).getItem() == AlloycraftItems.alloy) {
@@ -189,8 +223,8 @@ public class RecipeHandler implements IRecipe {
 					}
 				}
 			}
-		} catch (Exception e) {
-			// e.printStackTrace();
+		} catch (NullPointerException e) {
+			
 		}
 		// Hoe
 		try {
@@ -216,8 +250,8 @@ public class RecipeHandler implements IRecipe {
 					}
 				}
 			}
-		} catch (Exception e) {
-			// e.printStackTrace();
+		} catch (NullPointerException e) {
+			
 		}
 		// Hoe
 		try {
@@ -243,8 +277,8 @@ public class RecipeHandler implements IRecipe {
 					}
 				}
 			}
-		} catch (Exception e) {
-			// e.printStackTrace();
+		} catch (NullPointerException e) {
+			
 		}
 		// Shovel
 		try {
@@ -264,8 +298,62 @@ public class RecipeHandler implements IRecipe {
 					}
 				}
 			}
-		} catch (Exception e) {
-			// e.printStackTrace();
+		} catch (NullPointerException e) {
+			
+		}
+		// Leggings
+		try {
+			if (invCraft.getStackInSlot(0).getItem() == AlloycraftItems.alloy) {
+				if (invCraft.getStackInSlot(1).getItem() == AlloycraftItems.alloy) {
+					if (invCraft.getStackInSlot(2).getItem() == AlloycraftItems.alloy) {
+						if (invCraft.getStackInSlot(3).getItem() == AlloycraftItems.alloy) {
+							if (invCraft.getStackInSlot(5).getItem() == AlloycraftItems.alloy) {
+								if (invCraft.getStackInSlot(6).getItem() == AlloycraftItems.alloy) {
+									if (invCraft.getStackInSlot(8).getItem() == AlloycraftItems.alloy) {
+										ItemStack alloy1 = invCraft.getStackInSlot(0);
+										ItemStack alloy2 = invCraft.getStackInSlot(1);
+										ItemStack alloy3 = invCraft.getStackInSlot(2);
+										ItemStack alloy4 = invCraft.getStackInSlot(3);
+										ItemStack alloy5 = invCraft.getStackInSlot(5);
+										ItemStack alloy6 = invCraft.getStackInSlot(6);
+										ItemStack alloy7 = invCraft.getStackInSlot(8);
+										int prop1 = (int) Math.sqrt(alloy1.getTagCompound().getInteger("Strength")
+												+ alloy2.getTagCompound().getInteger("Strength")
+												+ alloy3.getTagCompound().getInteger("Strength")
+												+ alloy4.getTagCompound().getInteger("Strength")
+												+ alloy5.getTagCompound().getInteger("Strength")
+												+ alloy6.getTagCompound().getInteger("Strength")
+												+ alloy7.getTagCompound().getInteger("Strength"));
+										int prop2 = (int) Math.sqrt(alloy1.getTagCompound().getInteger("Durability")
+												+ alloy2.getTagCompound().getInteger("Durability")
+												+ alloy3.getTagCompound().getInteger("Durability")
+												+ alloy4.getTagCompound().getInteger("Durability")
+												+ alloy5.getTagCompound().getInteger("Durability")
+												+ alloy6.getTagCompound().getInteger("Durability")
+												+ alloy7.getTagCompound().getInteger("Durability"));
+										int prop3 = (int) Math
+												.sqrt(alloy1.getTagCompound().getInteger("Enchantability")
+														+ alloy2.getTagCompound().getInteger("Enchantability")
+														+ alloy3.getTagCompound().getInteger("Enchantability")
+														+ alloy4.getTagCompound().getInteger("Enchantability")
+														+ alloy5.getTagCompound().getInteger("Enchantability")
+														+ alloy6.getTagCompound().getInteger("Enchantability")
+														+ alloy7.getTagCompound().getInteger("Enchantability"));
+										result = new ItemStack(AlloycraftItems.alloyleggings, 1);
+										result.setTagCompound(new NBTTagCompound());
+										result.getTagCompound().setInteger("Strength", prop1);
+										result.getTagCompound().setInteger("Durability", prop2);
+										result.getTagCompound().setInteger("Enchantability", prop3);
+										return result;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		} catch (NullPointerException e) {
+			
 		}
 		// Helmet
 		try {
@@ -293,9 +381,8 @@ public class RecipeHandler implements IRecipe {
 										+ alloy2.getTagCompound().getInteger("Enchantability")
 										+ alloy3.getTagCompound().getInteger("Enchantability")
 										+ alloy4.getTagCompound().getInteger("Enchantability")
-										+ alloy5.getTagCompound().getInteger("Enchantability"));
+										+ alloy5.getTagCompound().getInteger("Enchantability")); 
 								result = new ItemStack(AlloycraftItems.alloyhelmet, 1);
-								((ItemArmor) result.getItem()).setColor(result, 25555555);    
 								result.setTagCompound(new NBTTagCompound());
 								result.getTagCompound().setInteger("Strength", prop1);
 								result.getTagCompound().setInteger("Durability", prop2);
@@ -306,10 +393,9 @@ public class RecipeHandler implements IRecipe {
 					}
 				}
 			}
-		} catch (Exception e) {
-
+		} catch (NullPointerException e) {
+			
 		}
-
 		// Chestplate
 		try {
 			if (invCraft.getStackInSlot(0).getItem() == AlloycraftItems.alloy) {
@@ -367,9 +453,44 @@ public class RecipeHandler implements IRecipe {
 					}
 				}
 			}
-		} catch (Exception e) {
-
+		} catch (NullPointerException e) {
+			
 		}
+		// Boots
+				try {
+					if (invCraft.getStackInSlot(0).getItem() == AlloycraftItems.alloy) {
+							if (invCraft.getStackInSlot(2).getItem() == AlloycraftItems.alloy) {
+								if (invCraft.getStackInSlot(3).getItem() == AlloycraftItems.alloy) {
+									if (invCraft.getStackInSlot(5).getItem() == AlloycraftItems.alloy) {
+										ItemStack alloy1 = invCraft.getStackInSlot(0);
+										ItemStack alloy3 = invCraft.getStackInSlot(2);
+										ItemStack alloy4 = invCraft.getStackInSlot(3);
+										ItemStack alloy5 = invCraft.getStackInSlot(5);
+										int prop1 = (int) Math.sqrt(alloy1.getTagCompound().getInteger("Strength")
+												+ alloy3.getTagCompound().getInteger("Strength")
+												+ alloy4.getTagCompound().getInteger("Strength")
+												+ alloy5.getTagCompound().getInteger("Strength"));
+										int prop2 = (int) Math.sqrt(alloy1.getTagCompound().getInteger("Durability")
+												+ alloy3.getTagCompound().getInteger("Durability")
+												+ alloy4.getTagCompound().getInteger("Durability")
+												+ alloy5.getTagCompound().getInteger("Durability"));
+										int prop3 = (int) Math.sqrt(alloy1.getTagCompound().getInteger("Enchantability")
+												+ alloy3.getTagCompound().getInteger("Enchantability")
+												+ alloy4.getTagCompound().getInteger("Enchantability")
+												+ alloy5.getTagCompound().getInteger("Enchantability")); 
+										result = new ItemStack(AlloycraftItems.alloyboots, 1);
+										result.setTagCompound(new NBTTagCompound());
+										result.getTagCompound().setInteger("Strength", prop1);
+										result.getTagCompound().setInteger("Durability", prop2);
+										result.getTagCompound().setInteger("Enchantability", prop3);
+										return result;
+									}
+								}
+							}
+						}
+				} catch (NullPointerException e) {
+					
+				}
 		return null;
 	}
 

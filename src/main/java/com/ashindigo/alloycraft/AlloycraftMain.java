@@ -31,14 +31,13 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-// TODO Add armor color
+// TODO Invert color for armor?
 @Mod(modid = AlloycraftMain.modid, version = "1.0", name = "Alloycraft", guiFactory = "com.ashindigo.alloycraft.lib.GuiFactory")
 public class AlloycraftMain implements UtilsMain {
 	
 	public static final String modid = "alloycraft";
 	public final static String CLIENT_PROXY_CLASS = "com.ashindigo.alloycraft.lib.ClientProxy";
 	public final static String SERVER_PROXY_CLASS = "com.ashindigo.alloycraft.lib.CommonProxy";
-	// XXX Achievements are long!
 	public static UtilsAchievement alloyforge;
 	public static UtilsAchievement alloy;
 	public static UtilsAchievement alloyaxe;
@@ -78,7 +77,6 @@ public class AlloycraftMain implements UtilsMain {
 			
 			AlloycraftBlocks.initBlocks();
 			AlloycraftItems.initItems();
-			GameRegistry.addShapelessRecipe(new ItemStack(AlloycraftItems.alloyhelmet), new Block[]{Blocks.DIRT});
 			alloycrafttab = new UtilsCreativeTab("alloycraft", Item.getItemFromBlock(AlloycraftBlocks.forgeoff));
 	    	NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 			GameRegistry.addRecipe(new RecipeHandler());

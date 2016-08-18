@@ -4,7 +4,8 @@ import com.ashindigo.alloycraft.blocks.ForgeBlock;
 import com.ashindigo.alloycraft.blocks.ForgeTeslaBlock;
 import com.ashindigo.alloycraft.tileentites.ForgeTeslaTileEntity;
 import com.ashindigo.alloycraft.tileentites.ForgeTileEntity;
-import com.ashindigo.utils.UtilsItemBlockLoader;
+import com.ashindigo.utils.UtilsItemBlockInterface;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelMesher;
@@ -15,13 +16,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
-public class AlloycraftBlocks extends UtilsItemBlockLoader {
+public class AlloycraftBlocks {
  
 	public static Block forgeoff;
 	public static Block forgeteslaoff;
@@ -57,6 +57,13 @@ public class AlloycraftBlocks extends UtilsItemBlockLoader {
 	        	"DCD",
 	        	'A', Items.IRON_INGOT, 'B', Blocks.IRON_BLOCK, 'C', Blocks.REDSTONE_BLOCK, 'D', Blocks.FURNACE
 	    	});
+		GameRegistry.addRecipe(new ItemStack(forgeteslaoff, 1), new Object[]{
+	        	"AAA",
+	        	"ACA",
+	        	"DBD",
+	        	'A', Items.IRON_INGOT, 'B', Blocks.IRON_BLOCK, 'C', Blocks.REDSTONE_BLOCK, 'D', Blocks.FURNACE
+	    	});
+		
 	}
 	
 	public static void postInitBlocks() {

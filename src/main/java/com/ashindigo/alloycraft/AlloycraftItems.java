@@ -9,15 +9,19 @@ import com.ashindigo.alloycraft.items.AlloyShovel;
 import com.ashindigo.alloycraft.items.AlloySword;
 import com.ashindigo.alloycraft.lib.ClientProxy;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
-// XXX RIP 
+// TODO Make recipes show up
 public class AlloycraftItems {
 	
 	public static Item alloy;

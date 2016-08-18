@@ -5,6 +5,7 @@ import java.util.List;
 import com.ashindigo.alloycraft.AlloycraftMain;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -12,6 +13,7 @@ import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -34,12 +36,37 @@ public class AlloyPickaxe extends ItemPickaxe {
 	        }
 	} 
 	}
-	public void addInformation(ItemStack itemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
-    {
+	
+	public void addInformation(ItemStack itemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		if (itemStack.getTagCompound() != null) {
-		par3List.add("§4Strength: §7" + Integer.toString(itemStack.getTagCompound().getInteger("Strength")));
-		par3List.add("§2Durability: §7" + Integer.toString(itemStack.getTagCompound().getInteger("Durability")));
-		par3List.add("§1Enchantability: §7" + Integer.toString(itemStack.getTagCompound().getInteger("Enchantability")));
+		par3List.add(TextFormatting.RED + "Strength: " + TextFormatting.GRAY + Integer.toString(itemStack.getTagCompound().getInteger("Strength")));
+		par3List.add(TextFormatting.GREEN + "Durability: " + TextFormatting.GRAY + Integer.toString(itemStack.getTagCompound().getInteger("Durability")));
+		par3List.add(TextFormatting.BLUE + "Enchantability: " + TextFormatting.GRAY + Integer.toString(itemStack.getTagCompound().getInteger("Enchantability")));
+		}
+	}
+	
+	@Override
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+        stack.damageItem(1, attacker);
+        target.setHealth(target.getHealth() - stack.getTagCompound().getInteger("Strength"));
+        return true;
+    }
+	
+	@Override
+	public int getMaxDamage(ItemStack itemstack) {
+		if (itemstack.getTagCompound() != null) {
+			return itemstack.getTagCompound().getInteger("Durability");
+		} else {
+			return 0;
+		}
+	}
+	
+	@Override
+	public int getItemEnchantability(ItemStack itemstack) {
+		if (itemstack.getTagCompound() != null) {
+			return itemstack.getTagCompound().getInteger("Enchantability");
+		} else {
+			return 0;
 		}
 	}
 
