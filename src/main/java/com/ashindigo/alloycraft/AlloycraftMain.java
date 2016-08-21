@@ -31,7 +31,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-// TODO Invert color for armor?
+// TODO Invert color for alloy items?
 @Mod(modid = AlloycraftMain.modid, version = "1.0", name = "Alloycraft", guiFactory = "com.ashindigo.alloycraft.lib.GuiFactory")
 public class AlloycraftMain implements UtilsMain {
 	

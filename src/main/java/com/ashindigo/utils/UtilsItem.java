@@ -38,11 +38,4 @@ public class UtilsItem extends Item {
 		modItems.put(modid, this);
 		
 	}
-
-	/**
-	 * Constructor to initialize a instance of the class
-	 */
-	public UtilsItem() {
-		
-	}
 }

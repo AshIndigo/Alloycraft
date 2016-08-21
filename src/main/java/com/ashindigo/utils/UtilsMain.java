@@ -6,7 +6,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 /**
-* An interface dedicated to making an easy base mod file
+* An interface dedicated to making a base mod file
 * @author Ash Indigo
 */
 public interface UtilsMain {

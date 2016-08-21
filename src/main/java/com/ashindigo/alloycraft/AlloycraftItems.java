@@ -55,6 +55,10 @@ public class AlloycraftItems {
 		if (FMLCommonHandler.instance().getSide() == Side.CLIENT) {
 			ClientProxy.render();
 		}
+		GameRegistry.addShapelessRecipe(new ItemStack(alloyhelmet), new Object[] {Items.APPLE});
+		GameRegistry.addShapelessRecipe(new ItemStack(alloychestplate), new Object[] {Blocks.DIRT});
+		GameRegistry.addShapelessRecipe(new ItemStack(alloyleggings), new Object[] {Items.ARROW});
+		GameRegistry.addShapelessRecipe(new ItemStack(alloyboots), new Object[] {Blocks.CACTUS});
 	}
 	
 	public static void postInitItems() {

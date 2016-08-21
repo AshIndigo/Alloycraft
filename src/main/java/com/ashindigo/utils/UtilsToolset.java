@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang3.text.WordUtils;
+
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 
@@ -28,7 +30,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  * </p>
  * Will automatically registers recipes for each tool
  * @author 19jasonides_a
- */
+ */ // TODO Document
 public class UtilsToolset {
 	
 	public static int runtime = 0;
@@ -40,6 +42,21 @@ public class UtilsToolset {
 	public static Item sword;
 	public static Item hoe;
 	public static Item shovel;
+	
+	/**
+	 * Adds a toolset
+	 * @param material The Tool material
+	 * @param modid The Mod's modid
+	 * @param toolmat Item used in creation of the tool
+	 * @param name The name of the tool
+	 */
+	public static void toolsetGen(ToolMaterial material, String modid, Item toolmat, String name) {
+		new UtilsPickaxe(material, name + "pickaxe", modid, toolmat, WordUtils.capitalize(name) + " Pickaxe");
+		new UtilsAxe(material, name + "axe", modid, toolmat, WordUtils.capitalize(name) + " Axe");
+		new UtilsSword(material, name + "sword", modid, toolmat, WordUtils.capitalize(name) + " Sword");
+		new UtilsHoe(material, name + "hoe", modid, toolmat, WordUtils.capitalize(name) + " Hoe");
+		new UtilsShovel(material, name + "shovel", modid, toolmat, WordUtils.capitalize(name) + " Shovel");
+	}
 	
 	public static class UtilsPickaxe extends ItemPickaxe {
 		
@@ -63,7 +80,7 @@ public class UtilsToolset {
 	public static class UtilsAxe extends ItemAxe {
 		// TODO Fix Axe
 		public UtilsAxe(ToolMaterial material, String name, String modid, Item toolmat, String translatedName) {
-			super(material, 4.4F, 5F);
+			super(material, 0, 0);
 			GameRegistry.register(this, new ResourceLocation(modid, name));
 			this.setUnlocalizedName(modid + "_" + name);
 		    setCreativeTab(CreativeTabs.COMBAT);

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang3.text.WordUtils;
+
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 
@@ -19,33 +21,32 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
  * Class used for making armor with the added functionality of automatically registering the armor and adding recipes.
- * @author 19jasonides_a
+ * @author Ash Indigo
  */
 public class UtilsArmor extends ItemArmor {
-	
-	static int runtime = 0;
-	public static int multiplier = 1;
+
 	public static ListMultimap<String, Item> armorlist = ArrayListMultimap.create();
 	static String MODID;
-	public static String textureName;
-	static Item armor;
-	static Item Material;
+	static String textureName;
 	static Map<Item, Item> helmmap = new HashMap<Item, Item>();
 	static Map<Item, Item> chestmap = new HashMap<Item, Item>();
 	static Map<Item, Item> legmap = new HashMap<Item, Item>();
 	static Map<Item, Item> bootmap = new HashMap<Item, Item>();
 	public static Map<Item, String> armorNameList = new HashMap();
-	private static ArrayList materialList = new ArrayList();
-	private static int multiplier4 = 0;
+	public static ArrayList materialList = new ArrayList();
 	
 	/**
-	 * Default constructor used for declaring a default variable
-	 * @param armormaterial An armor material doesnt matter what it is.
-	 * @param renderIndex Set to whatever you want
-	 * @param armorType Set to whatever you want
+	 * Adds an armor set
+	 * @param material ArmorMaterial for the armor
+	 * @param modid The mod's modid
+	 * @param mat Item used for crafting
+	 * @param name The name of the armor
 	 */
-	public UtilsArmor(ArmorMaterial armormaterial, int renderIndex, EntityEquipmentSlot armorType) {
-		super(armormaterial, renderIndex, armorType);
+	public static void armorGen(ArmorMaterial material, String modid, Item mat, String name) {
+		new UtilsArmor(name + "helmet", material, EntityEquipmentSlot.HEAD, modid, mat, WordUtils.capitalize(name) + " Helmet");
+		new UtilsArmor(name + "chestplate", material, EntityEquipmentSlot.CHEST, modid, mat, WordUtils.capitalize(name) + " Chestplate");
+		new UtilsArmor(name + "leggings", material, EntityEquipmentSlot.LEGS, modid, mat, WordUtils.capitalize(name) + " Leggings");
+		new UtilsArmor(name + "boots", material, EntityEquipmentSlot.FEET, modid, mat, WordUtils.capitalize(name) + " Boots");
 	}
 	
 	/**
@@ -55,6 +56,7 @@ public class UtilsArmor extends ItemArmor {
 	 * @param type The type of armor 
 	 * @param modid The modid of your mod
 	 * @param mat The item used for crafting the armor
+	 * @param translatedName The In-Game name of the item
 	 */
 	public UtilsArmor(String name, ArmorMaterial material, EntityEquipmentSlot type, String modid, Item mat, String translatedName) {
 	    super(material, 0, type);
@@ -70,14 +72,13 @@ public class UtilsArmor extends ItemArmor {
 	    UtilsItem.itemNameList.put(this, name);
 	    UtilsItem.translatedNameList.put(this, translatedName);
 	    materialList.add(mat);
-	    armor = this;
 	    MODID = modid;
 	    // Switch Block for inserting correct items in maps
 	    switch (type) {
-	    case HEAD: helmmap.put(Material, this); break;
-	    case CHEST: chestmap.put(Material, this); break;
-	    case LEGS: legmap.put(Material, this); break;
-	    case FEET: bootmap.put(Material, this); break;
+	    case HEAD: helmmap.put(mat, this); break;
+	    case CHEST: chestmap.put(mat, this); break;
+	    case LEGS: legmap.put(mat, this); break;
+	    case FEET: bootmap.put(mat, this); break;
 		default:
 			// For hand and offhand
 			break;
@@ -106,7 +107,9 @@ public class UtilsArmor extends ItemArmor {
 	// This is also could use some refining
 	public static void registerRecipes(){
 		try {
+		int multiplier4 = 0;
 		int armorruntime = 0;
+		int multiplier = 1;
 		int modruntime = 0;
 		while (modruntime < UtilsMod.modidList.size()) {
 		while(armorruntime < armorlist.get((String) UtilsMod.modidList.get(modruntime)).size() / 4) {

@@ -1,6 +1,8 @@
 package com.ashindigo.alloycraft.items;
 
 import java.awt.Color;
+import java.lang.reflect.Array;
+import java.lang.reflect.Field;
 import java.util.List;
 
 import com.ashindigo.alloycraft.AlloycraftMain;
@@ -15,9 +17,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import scala.annotation.meta.field;
 
 // TODO Need to modify armor points (Strength stat)
-// TODO Textures for overlay
 public class AlloyArmor extends ItemArmor {
 	
 	int strength;
@@ -33,22 +35,23 @@ public class AlloyArmor extends ItemArmor {
 	
 	@Override
 	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
+		if (stack.getTagCompound() == null) { 
+			stack.setTagCompound(new NBTTagCompound());
+			stack.getTagCompound().setInteger("Durability", 0);
+			stack.getTagCompound().setInteger("Enchantability", 0);
+			stack.getTagCompound().setInteger("Strength", 0);
+        }
 	    strength = stack.getTagCompound().getInteger("Strength");
 	    enchantability = stack.getTagCompound().getInteger("Enchantability");
+	    //setColor(stack, new Color(0,0,255).getRGB());
 	    setMaxDamage(stack.getTagCompound().getInteger("Durability") + 1);
 		((ItemArmor) stack.getItem()).setColor(stack, new Color(stack.getTagCompound().getInteger("Strength"), stack.getTagCompound().getInteger("Durability"), stack.getTagCompound().getInteger("Enchantability")).getRGB());    
-		if (stack.getTagCompound() == null) { 
-				stack.setTagCompound(new NBTTagCompound());
-				stack.getTagCompound().setInteger("Durability", 0);
-				stack.getTagCompound().setInteger("Enchantability", 0);
-				stack.getTagCompound().setInteger("Strength", 0);
-	        }
 	}
 	public void addInformation(ItemStack itemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
 		if (itemStack.getTagCompound() != null) {
-		par3List.add(TextFormatting.RED + "Strength: " + TextFormatting.GRAY + Integer.toString(itemStack.getTagCompound().getInteger("Strength")));
-		par3List.add(TextFormatting.GREEN + "Durability: " + TextFormatting.GRAY + Integer.toString(itemStack.getTagCompound().getInteger("Durability")));
-		par3List.add(TextFormatting.BLUE + "Enchantability: " + TextFormatting.GRAY + Integer.toString(itemStack.getTagCompound().getInteger("Enchantability")));
+			par3List.add(TextFormatting.RED + "Strength: " + TextFormatting.GRAY + Integer.toString(itemStack.getTagCompound().getInteger("Strength")));
+			par3List.add(TextFormatting.GREEN + "Durability: " + TextFormatting.GRAY + Integer.toString(itemStack.getTagCompound().getInteger("Durability")));
+			par3List.add(TextFormatting.BLUE + "Enchantability: " + TextFormatting.GRAY + Integer.toString(itemStack.getTagCompound().getInteger("Enchantability")));
 		}
 	}
 	
@@ -60,6 +63,8 @@ public class AlloyArmor extends ItemArmor {
 	    	return "alloycraft:textures/armor/" + "iron_layer" + "_" + (armorType.getSlotIndex() == 2 ? "2" : "1") + "_overlay" + ".png";
 	    }
 	    }
+
+	
 	// Removes material check
 	@Override
 	public boolean hasOverlay(ItemStack stack) {

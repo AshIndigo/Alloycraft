@@ -23,6 +23,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 // TODO Add fluid JSON
 // TODO Add Crop Support
 // TODO Utils In-game config menu support
+// TODO Implement PR #3154?
+// TODO Use a String getter in UtilsMod to return the correct GUIFactory class in @Mod
 @Mod(modid = "indigoutils", version = "1.0", name = "IndigoUtils")
 public class UtilsMod implements UtilsMain {
 	

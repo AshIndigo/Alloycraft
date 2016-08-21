@@ -30,6 +30,7 @@ public class UtilsBlock extends Block {
 	 * @param mat The material for the block
 	 * @param modid Your mod's Mod ID
 	 * @param name The name of the block
+	 * @param translatedName The In-Game name of the block
 	 */
 	public UtilsBlock(Material mat, String modid, String name, String translatedName) {
 			super(mat);
@@ -41,10 +42,4 @@ public class UtilsBlock extends Block {
 			modBlocks.put(modid, this);
 			translatedNameList.put(this, translatedName);
 		}
-	/**
-	 * Default constructor for setting up a variable
-	 */
-	public UtilsBlock() {
-		super(Material.ROCK);
-	}
 }
