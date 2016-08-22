@@ -103,8 +103,9 @@ public class UtilsArmor extends ItemArmor {
 		return false;
 	}
 
-	// TODO Modify so a full set isnt forced created
-	// This is also could use some refining
+	/**
+	 * Sets up recipes for armor
+	 */
 	public static void registerRecipes(){
 		try {
 		int multiplier4 = 0;

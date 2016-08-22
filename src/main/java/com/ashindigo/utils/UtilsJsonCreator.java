@@ -9,7 +9,6 @@ import java.io.IOException;
  * Automatic Json creator
  * @author Ash Indigo
  */
-// XXX Possibly shrink down Json size? (The rotation details seem un-needed
 public class UtilsJsonCreator {
 	
 	static File configFolder =  UtilsMod.config.getConfigFile().getParentFile();

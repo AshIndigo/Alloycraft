@@ -29,11 +29,10 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  * Example: {@link UtilsToolset.UtilsPickaxe}
  * </p>
  * Will automatically registers recipes for each tool
- * @author 19jasonides_a
- */ // TODO Document
+ * @author Ash Indigo
+ */ 
 public class UtilsToolset {
 	
-	public static int runtime = 0;
 	public static Map<Item, String> toollistsname = new HashMap();
 	public static ListMultimap<String, Item> toollists = ArrayListMultimap.create();
 	public static Item Material;
@@ -116,8 +115,6 @@ public class UtilsToolset {
 	}
 	
 	public static class UtilsHoe extends ItemHoe {
-
-		String Name;
 		
 		public UtilsHoe(ToolMaterial material, String name, String modid, Item toolmat, String translatedName) {
 			super(material);
@@ -137,8 +134,6 @@ public class UtilsToolset {
 	}
 	
 	public static class UtilsShovel extends ItemSpade {
-
-		String Name;
 		
 		public UtilsShovel(ToolMaterial material, String name, String modid, Item toolmat, String translatedName) {
 			super(material);

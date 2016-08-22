@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.pattern.BlockMatcher;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkGenerator;
@@ -14,7 +16,8 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 /**
- * @author 19jasonides_a
+ * Manages worldgen from {@link UtilsBlockOre}
+ * @author Ash Indigo
  */
 
 public class UtilsWorldgen implements IWorldGenerator {
@@ -31,29 +34,15 @@ public class UtilsWorldgen implements IWorldGenerator {
             case -1: oregenNether(random, chunkX * 16, chunkZ * 16, world); break;
         }
     }
-	/**
-	 * 
-	 * @param block
-	 * @param world
-	 * @param random
-	 * @param blockXPos
-	 * @param blockZPos
-	 * @param minVeinSize
-	 * @param maxVeinSize
-	 * @param chancesToSpawn
-	 * @param minY
-	 * @param maxY
-	 */
-    public static void addOreSpawn(Block block, World world, Random random, int blockXPos, int blockZPos, int minVeinSize, int maxVeinSize, int chancesToSpawn, int minY, int maxY )
-    {
-    	// TODO this hates me
-    	//WorldGenMinable minable = new WorldGenMinable(block.getDefaultState(), (minVeinSize + random.nextInt(maxVeinSize - minVeinSize)));
+	
+    public static void addOreSpawn(Block block, World world, Random random, int blockXPos, int blockZPos, int minVeinSize, int maxVeinSize, int chancesToSpawn, int minY, int maxY, Block blockgen) {
+    	WorldGenMinable minable = new WorldGenMinable(block.getDefaultState(), (minVeinSize + random.nextInt(maxVeinSize - minVeinSize)), BlockMatcher.forBlock(blockgen));
         for(int i = 0; i < chancesToSpawn; i++)
         {
             int posX = blockXPos + random.nextInt(16);
             int posY = minY + random.nextInt(maxY - minY);
             int posZ = blockZPos + random.nextInt(16);
-            //minable.generate(world, random, new BlockPos(posX, posY, posZ));
+            minable.generate(world, random, new BlockPos(posX, posY, posZ));
         }
         }
     
@@ -63,7 +52,7 @@ public class UtilsWorldgen implements IWorldGenerator {
 	 private static void oregenOverworld(Random random, int x, int z, World world) {
 		int runtime = 0;
 		while(runtime < OverworldList.size()){
-			addOreSpawn((Block) OverworldList.get(runtime), world, random, x, z, 10, 15, 8, 0, 128);
+			addOreSpawn((Block) OverworldList.get(runtime), world, random, x, z, 10, 15, 8, 0, 128, Blocks.STONE);
 			runtime++;
 			} 
 	}
@@ -74,7 +63,7 @@ public class UtilsWorldgen implements IWorldGenerator {
 	 private static void oregenNether(Random random, int x, int z, World world) {
 	    int runtime = 0;
 		while(runtime < NetherList.size()){
-			addOreSpawn((Block) NetherList.get(runtime), world, random, x, z, 10, 15, 8, 0, 128);
+			addOreSpawn((Block) NetherList.get(runtime), world, random, x, z, 10, 15, 8, 0, 128, Blocks.NETHERRACK);
 			runtime++;
 			} 	
 	}
@@ -85,7 +74,7 @@ public class UtilsWorldgen implements IWorldGenerator {
 	private static void oregenEnd(Random random, int x, int z, World world) {
 		int runtime = 0;
 		while(runtime < EndList.size()){
-			addOreSpawn((Block) EndList.get(runtime), world, random, x, z, 10, 15, 8, 0, 128);
+			addOreSpawn((Block) EndList.get(runtime), world, random, x, z, 10, 15, 8, 0, 128, Blocks.END_STONE);
 			runtime++;
 			} 
 		

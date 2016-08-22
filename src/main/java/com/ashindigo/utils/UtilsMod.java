@@ -20,8 +20,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 /**
  * Small Forge mod to run required methods.
  */
-// TODO Add fluid JSON
-// TODO Add Crop Support
 // TODO Utils In-game config menu support
 // TODO Implement PR #3154?
 // TODO Use a String getter in UtilsMod to return the correct GUIFactory class in @Mod

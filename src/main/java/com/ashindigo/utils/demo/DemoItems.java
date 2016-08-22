@@ -37,12 +37,10 @@ public class DemoItems {
 	}
 
 	public static void initItems() {
-		// TODO Auto-generated method stub
 
 	}
 
 	public static void postInitItems() {
-		// TODO Auto-generated method stub
 
 	}
 

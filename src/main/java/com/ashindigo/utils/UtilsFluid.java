@@ -11,10 +11,10 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
  * This is a class used for making various fluid needs.
- * @author Ash
- *
+ * @author Ash Indigo
+ * 
  */
-
+// TODO Remove need for UtilsFluidBlock constructor?
 public class UtilsFluid extends Fluid {
 
 	public UtilsFluid(String fluidName, ResourceLocation still, ResourceLocation flowing) {

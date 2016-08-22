@@ -3,7 +3,6 @@ package com.ashindigo.utils;
 /**
  * Used for adding Block and Item Loader methods easily
  * @author Ash Indigo
- * // TODO Fix for usage
  */
 @Deprecated // Don't use for now
 public interface UtilsItemBlockInterface {

@@ -93,7 +93,6 @@ public class UtilsItemBlockLoader {
 		}
 		modRuntime++;
 		}
-		UtilsBlockOre.generate();
 	}
 	
 	public static void postInitBlocks() {
