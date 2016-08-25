@@ -5,7 +5,7 @@ import net.minecraft.item.Item;
 
 /**
  * Easy way for making a creative tab
- * @author Asher
+ * @author Ash Indigo
  *
  */
 public class UtilsCreativeTab extends CreativeTabs {

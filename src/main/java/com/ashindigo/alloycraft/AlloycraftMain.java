@@ -3,24 +3,18 @@ package com.ashindigo.alloycraft;
 import com.ashindigo.alloycraft.lib.CommonProxy;
 import com.ashindigo.alloycraft.lib.GuiHandler;
 import com.ashindigo.alloycraft.lib.RecipeHandler;
+import com.ashindigo.utils.IndigoMod;
 import com.ashindigo.utils.UtilsAchievement;
 import com.ashindigo.utils.UtilsCreativeTab;
 import com.ashindigo.utils.UtilsMain;
 import com.ashindigo.utils.UtilsMod;
 
-import net.minecraft.block.Block;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
-import net.minecraft.util.registry.RegistrySimple;
 import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.client.config.GuiConfig;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -33,6 +27,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 // TODO Invert color for alloy items?
 @Mod(modid = AlloycraftMain.modid, version = "1.0", name = "Alloycraft", guiFactory = "com.ashindigo.alloycraft.lib.GuiFactory")
+@IndigoMod
 public class AlloycraftMain implements UtilsMain {
 	
 	public static final String modid = "alloycraft";
@@ -50,7 +45,7 @@ public class AlloycraftMain implements UtilsMain {
 	    public static CommonProxy proxy;
 		
 		@Instance(modid)
-		public static AlloycraftMain instance = new AlloycraftMain();
+		public static AlloycraftMain instance;
 
 		// Can this be removed? (This feels dated)
 		public static final int guiIDForge = 1;

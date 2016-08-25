@@ -16,7 +16,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class AlloyAxe extends ItemAxe {
 
-	//TODO Using different constructor for axe
 	public AlloyAxe(ToolMaterial material, String name, String modid) {
 		super(material, material.getDamageVsEntity(), 4F);
 		this.setUnlocalizedName(modid + "_" + name);

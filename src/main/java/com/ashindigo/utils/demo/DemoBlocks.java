@@ -27,8 +27,8 @@ public class DemoBlocks {
 		testBlock1 = new UtilsBlock(Material.ROCK, "utilsdemo", "testblock1", "Test Block 1");
 		testBlock2 = new UtilsBlock(Material.ROCK, "utilsdemo", "testblock2", "Test Block 2");
 		// Fluids
-		testFluid1 = new UtilsFluid("demofluid", new ResourceLocation("utilsdemo:demoflow"), new ResourceLocation("utilsdemo:demostill"));
-		testFluidBlock1 = new UtilsFluid.UtilsFluidBlock(testFluid1, Material.WATER, "demofluid", "utilsdemo");
+		testFluid1 = new UtilsFluid("demofluid", new ResourceLocation("utilsdemo:demoflow"), new ResourceLocation("utilsdemo:demostill"), "demoFluid", Material.WATER, "utilsdemo");
+		//testFluidBlock1 = new UtilsFluid.UtilsFluidBlock(testFluid1, Material.WATER, "demofluid", "utilsdemo");
 		// An Ore
 		testOre1 = new UtilsBlockOre(DemoItems.testItem3, testBlock1, 0, testBlock2);
 		

@@ -26,8 +26,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class UtilsArmor extends ItemArmor {
 
 	public static ListMultimap<String, Item> armorlist = ArrayListMultimap.create();
-	static String MODID;
-	static String textureName;
+	String MODID;
+	String textureName;
 	static Map<Item, Item> helmmap = new HashMap<Item, Item>();
 	static Map<Item, Item> chestmap = new HashMap<Item, Item>();
 	static Map<Item, Item> legmap = new HashMap<Item, Item>();

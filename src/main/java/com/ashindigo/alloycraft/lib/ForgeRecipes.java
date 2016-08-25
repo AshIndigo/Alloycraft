@@ -10,13 +10,8 @@ import net.minecraft.nbt.NBTTagCompound;
 // So well written
 public class ForgeRecipes {
 	
-	public ForgeRecipes() {
-		
-	}	
-	
 	public static ItemStack getOutput(ItemStack item, ItemStack item2) {
-		ItemStack itemstack;
-		itemstack = null;
+		ItemStack itemstack = null;
 		itemstack = new ItemStack(AlloycraftItems.alloy, 1);
 		// Base alloy crafting
 		if (item.getItem() == Items.IRON_INGOT && item2.getItem() == Items.GOLD_INGOT || item.getItem() == Items.GOLD_INGOT && item2.getItem() == Items.IRON_INGOT) {

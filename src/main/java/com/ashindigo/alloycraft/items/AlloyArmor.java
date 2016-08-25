@@ -1,40 +1,42 @@
 package com.ashindigo.alloycraft.items;
 
 import java.awt.Color;
-import java.lang.reflect.Array;
-import java.lang.reflect.Field;
 import java.util.List;
 
 import com.ashindigo.alloycraft.AlloycraftMain;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import scala.annotation.meta.field;
 
 // TODO Need to modify armor points (Strength stat)
-public class AlloyArmor extends ItemArmor {
+public class AlloyArmor extends ItemArmor implements ISpecialArmor {
 	
 	int strength;
 	int enchantability;
+	private ArmorMaterial Material;
 
 	public AlloyArmor(String name, ArmorMaterial material, EntityEquipmentSlot type, String modid) {
 	    super(material, 0, type);
 		setCreativeTab(AlloycraftMain.alloycrafttab);
 		GameRegistry.register(this, new ResourceLocation(modid, name));
 		maxStackSize = 1;
+		Material = material;
 	    this.setUnlocalizedName(modid + "_" + name);
 	}
 	
 	@Override
-	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
+	public void onCreated(ItemStack stack, World world, EntityPlayer player) {	
 		if (stack.getTagCompound() == null) { 
 			stack.setTagCompound(new NBTTagCompound());
 			stack.getTagCompound().setInteger("Durability", 0);
@@ -44,6 +46,8 @@ public class AlloyArmor extends ItemArmor {
 	    strength = stack.getTagCompound().getInteger("Strength");
 	    enchantability = stack.getTagCompound().getInteger("Enchantability");
 	    //setColor(stack, new Color(0,0,255).getRGB());
+	    Material.getDamageReductionAmount(armorType);
+	    this.getArmorMaterial().getDamageReductionAmount(armorType)
 	    setMaxDamage(stack.getTagCompound().getInteger("Durability") + 1);
 		((ItemArmor) stack.getItem()).setColor(stack, new Color(stack.getTagCompound().getInteger("Strength"), stack.getTagCompound().getInteger("Durability"), stack.getTagCompound().getInteger("Enchantability")).getRGB());    
 	}
@@ -63,7 +67,6 @@ public class AlloyArmor extends ItemArmor {
 	    	return "alloycraft:textures/armor/" + "iron_layer" + "_" + (armorType.getSlotIndex() == 2 ? "2" : "1") + "_overlay" + ".png";
 	    }
 	    }
-
 	
 	// Removes material check
 	@Override
@@ -124,4 +127,19 @@ public class AlloyArmor extends ItemArmor {
 
 		            return 0;
 		        }
+
+	@Override
+	public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
+		return null;
+	}
+
+	@Override
+	public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
+		return 0;
+	}
+
+	@Override
+	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
+		
+	}
 	}

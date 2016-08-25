@@ -4,6 +4,8 @@ import com.ashindigo.utils.UtilsArmor;
 import com.ashindigo.utils.UtilsItem;
 import com.ashindigo.utils.UtilsItemBlockInterface.IItem;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
@@ -20,9 +22,9 @@ import com.ashindigo.utils.UtilsToolset;
  */
 public class DemoItems {
 
-	public static UtilsItem testItem1;
-	public static UtilsItem testItem2;
-	public static UtilsItem testItem3;
+	public static Item testItem1;
+	public static Item testItem2;
+	public static Item testItem3;
 	public static ArmorMaterial demoArmorMat = EnumHelper.addArmorMaterial("demoArmorMat", "demoArmorMat", 0, new int[]{0,0,0,0}, 0, null, 0);
 	public static ToolMaterial demoMat = EnumHelper.addToolMaterial("demoMat", 0, 0, 0, 0, 0);
 	

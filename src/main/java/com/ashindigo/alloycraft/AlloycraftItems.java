@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
-// TODO Make recipes show up
+// TODO Make recipes show up in JEI
 public class AlloycraftItems {
 	
 	public static Item alloy;

@@ -10,18 +10,19 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
- * This is a class used for making various fluid needs.
+ * This is a class used for making a fluid.
  * @author Ash Indigo
  * 
  */
-// TODO Remove need for UtilsFluidBlock constructor?
+// XXX Or possibly add a method to make fluids and let the constructors remain separate
 public class UtilsFluid extends Fluid {
 
-	public UtilsFluid(String fluidName, ResourceLocation still, ResourceLocation flowing) {
+	public UtilsFluid(String fluidName, ResourceLocation still, ResourceLocation flowing, String fluidBlockName, Material material, String modid) {
 		super(fluidName, still, flowing);
 		FluidRegistry.registerFluid(this);
 		FluidRegistry.addBucketForFluid(this);
 		setUnlocalizedName(fluidName);
+		new UtilsFluidBlock(this, material, fluidBlockName, modid);
 	}
 	public static class UtilsFluidBlock extends BlockFluidClassic {
 

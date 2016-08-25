@@ -3,7 +3,6 @@ package com.ashindigo.utils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.commons.lang3.text.WordUtils;
 
@@ -14,14 +13,13 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import net.minecraft.item.ItemTool;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 /**
  * A class dedicated to making tool sets.
@@ -35,12 +33,8 @@ public class UtilsToolset {
 	
 	public static Map<Item, String> toollistsname = new HashMap();
 	public static ListMultimap<String, Item> toollists = ArrayListMultimap.create();
-	public static Item Material;
-	public static Item pickaxe;
-	public static Item axe;
-	public static Item sword;
-	public static Item hoe;
-	public static Item shovel;
+	public static ListMultimap<Item, Item> craftingmap = ArrayListMultimap.create();
+	public static ArrayList matlist = new ArrayList();
 	
 	/**
 	 * Adds a toolset
@@ -64,8 +58,8 @@ public class UtilsToolset {
 			GameRegistry.register(this, new ResourceLocation(modid, name));
 			this.setUnlocalizedName(modid + "_" + name);
 		    setCreativeTab(CreativeTabs.COMBAT);
-		    Material = toolmat;
-		    pickaxe = this;
+		    matlist.add(toolmat);
+		    craftingmap.put(toolmat, this);
 		    if (this != null){
 			    toollists.put(modid, this);
 			    toollistsname.put(this, name);
@@ -77,14 +71,14 @@ public class UtilsToolset {
 	}
 	
 	public static class UtilsAxe extends ItemAxe {
-		// TODO Fix Axe
+		
 		public UtilsAxe(ToolMaterial material, String name, String modid, Item toolmat, String translatedName) {
-			super(material, 0, 0);
+			super(material, material.getDamageVsEntity(), material.getEfficiencyOnProperMaterial());
 			GameRegistry.register(this, new ResourceLocation(modid, name));
 			this.setUnlocalizedName(modid + "_" + name);
 		    setCreativeTab(CreativeTabs.COMBAT);
-		    Material = toolmat;
-		    axe = this;
+		    matlist.add(toolmat);
+		    craftingmap.put(toolmat, this);
 		    if (this != null){
 		    	toollists.put(modid, this);
 				toollistsname.put(this, name);
@@ -102,8 +96,8 @@ public class UtilsToolset {
 			GameRegistry.register(this, new ResourceLocation(modid, name));
 			this.setUnlocalizedName(modid + "_" + name);
 		    setCreativeTab(CreativeTabs.COMBAT);
-		    Material = toolmat;
-		    sword = this;
+		    matlist.add(toolmat);
+		    craftingmap.put(toolmat, this);
 		    if (this != null){
 		    	toollists.put(modid, this);
 				toollistsname.put(this, name);
@@ -121,8 +115,8 @@ public class UtilsToolset {
 			GameRegistry.register(this, new ResourceLocation(modid, name));
 			this.setUnlocalizedName(modid + "_" + name);
 		    setCreativeTab(CreativeTabs.COMBAT);
-		    Material = toolmat;
-		    hoe = this;
+		    matlist.add(toolmat);
+		    craftingmap.put(toolmat, this);
 		    if (this != null){
 		    	toollists.put(modid, this);
 				toollistsname.put(this, name);
@@ -140,8 +134,8 @@ public class UtilsToolset {
 			GameRegistry.register(this, new ResourceLocation(modid, name));
 			this.setUnlocalizedName(modid + "_" + name);
 		    setCreativeTab(CreativeTabs.COMBAT);
-		    Material = toolmat;
-		    shovel = this;
+		    matlist.add(toolmat);
+		    craftingmap.put(toolmat, this);
 		    if (this != null){
 		    	toollists.put(modid, this);
 				toollistsname.put(this, name);
@@ -155,62 +149,75 @@ public class UtilsToolset {
 	/**
 	 * Method that automatically add recipes for tools
 	 */
-	public static void registerRecipes(){
-			if(sword != null){
-		GameRegistry.addRecipe(new ItemStack(sword, 1), new Object[]{
+	// I forgot how to code it seems
+	public static void registerRecipes() {
+		try {
+		int runtime0 = 0;
+		int runtime = 0;
+		int runtime2 = 0;
+		// Matlist contains the materials used for crafting tools
+		while (matlist.size() > runtime0) {
+			System.out.println(runtime0);
+			System.out.println(runtime);
+			System.out.println(runtime2);
+			// crafting map is a multimap that has the key of the material to get to get a list of tools
+		while (craftingmap.get((Item) matlist.get(runtime0)).size() < runtime) {
+			GameRegistry.addRecipe(new ItemStack(craftingmap.get((Item) matlist.get(runtime0)).get(runtime2), 1), new Object[]{
+		        	"AAA",
+		        	" B ",
+		        	" B ",
+		        	'A', matlist.get(runtime0), 'B', Items.STICK
+		    	});
+			runtime2++;
+			GameRegistry.addRecipe(new ItemStack(craftingmap.get((Item) matlist.get(runtime0)).get(runtime2), 1), new Object[]{
+		        	"AA ",
+		        	"AB ",
+		        	" B ",
+		        	'A', matlist.get(runtime0), 'B', Items.STICK
+		    	});
+		    	GameRegistry.addRecipe(new ItemStack(craftingmap.get((Item) matlist.get(runtime0)).get(runtime2), 1), new Object[]{
+		        	" AA",
+		        	" BA",
+		        	" B ",
+		        	'A', matlist.get(runtime0), 'B', Items.STICK
+		    	});
+				runtime2++;
+		GameRegistry.addRecipe(new ItemStack(craftingmap.get((Item) matlist.get(runtime0)).get(runtime2), 1), new Object[]{
 	        	" A ",
 	        	" A ",
 	        	" B ",
-	        	'A', Material, 'B', Items.STICK
+	        	'A', matlist.get(runtime0), 'B', Items.STICK
 	    	});
-			}
-			if(pickaxe != null){
-	    	GameRegistry.addRecipe(new ItemStack(pickaxe, 1), new Object[]{
-	        	"AAA",
-	        	" B ",
-	        	" B ",
-	        	'A', Material, 'B', Items.STICK
-	    	});
-			}
-			if(shovel != null){
-	    	GameRegistry.addRecipe(new ItemStack(shovel, 1), new Object[]{
-	        	" A ",
-	        	" B ",
-	        	" B ",
-	        	'A', Material, 'B', Items.STICK
-	    	});
-			}
-			if(hoe != null){
-	    	GameRegistry.addRecipe(new ItemStack(hoe, 1), new Object[]{
+		runtime2++;
+	    	GameRegistry.addRecipe(new ItemStack(craftingmap.get((Item) matlist.get(runtime0)).get(runtime2), 1), new Object[]{
 	        	"AA ",
 	        	" B ",
 	        	" B ",
-	        	'A', Material, 'B', Items.STICK
+	        	'A', matlist.get(runtime0), 'B', Items.STICK
 	    	});
-			}
-	    	if(hoe != null){
-	    	GameRegistry.addRecipe(new ItemStack(hoe, 1), new Object[]{
+	    	GameRegistry.addRecipe(new ItemStack(craftingmap.get((Item) matlist.get(runtime0)).get(runtime2), 1), new Object[]{
 	        	" AA",
 	        	" B ",
 	        	" B ",
-	        	'A', Material, 'B', Items.STICK
+	        	'A', matlist.get(runtime0), 'B', Items.STICK
 	    	});
+			runtime2++;
+	    	GameRegistry.addRecipe(new ItemStack(craftingmap.get((Item) matlist.get(runtime0)).get(runtime2), 1), new Object[]{
+		        	" A ",
+		        	" B ",
+		        	" B ",
+		        	'A', matlist.get(runtime0), 'B', Items.STICK
+		    	});
+	    	System.out.println(runtime0);
+			System.out.println(runtime);
+			System.out.println(runtime2);
+			runtime2 = 0;
+			runtime0++;
 	    	}
-	    	if(axe != null){
-	    	GameRegistry.addRecipe(new ItemStack(axe, 1), new Object[]{
-	        	"AA ",
-	        	"AB ",
-	        	" B ",
-	        	'A', Material, 'B', Items.STICK
-	    	});
-	    	}
-	    	if(axe != null){
-	    	GameRegistry.addRecipe(new ItemStack(axe, 1), new Object[]{
-	        	" AA",
-	        	" BA",
-	        	" B ",
-	        	'A', Material, 'B', Items.STICK
-	    	});
-	    	}
+		runtime++;
+	}
+} catch (IndexOutOfBoundsException e) {
+	e.printStackTrace();
+}
 	}
 }

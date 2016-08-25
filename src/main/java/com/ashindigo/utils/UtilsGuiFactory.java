@@ -8,7 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.fml.client.IModGuiFactory;
 
-// TODO The GUIFactory parameter on @Mod takes a unique class and institates it with a blank constructor (So it cant be used for now)
+// The GUIFactory parameter on @Mod takes a unique class and instigates it with a blank constructor (So it cant be used for now)
 // Map for classes?
 public class UtilsGuiFactory implements IModGuiFactory {
 	

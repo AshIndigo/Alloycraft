@@ -1,5 +1,6 @@
 package com.ashindigo.utils.demo;
 
+import com.ashindigo.utils.IndigoMod;
 import com.ashindigo.utils.UtilsAchievement;
 import com.ashindigo.utils.UtilsCreativeTab;
 import com.ashindigo.utils.UtilsMain;
@@ -23,6 +24,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
  *
  */
 @Mod(modid="utilsdemo", name="Utils Demo", version="1.0", dependencies="required-before:indigoutils")  
+@IndigoMod
 public class DemoMain implements UtilsMain {
 
 	@Override
@@ -49,7 +51,6 @@ public class DemoMain implements UtilsMain {
 
 	@Override
 	public void postinit(FMLPostInitializationEvent event) {
-		// TODO Auto-generated method stub
 
 	}
 
