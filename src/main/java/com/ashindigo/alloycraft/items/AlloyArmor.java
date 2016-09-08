@@ -24,14 +24,12 @@ public class AlloyArmor extends ItemArmor implements ISpecialArmor {
 	
 	int strength;
 	int enchantability;
-	private ArmorMaterial Material;
 
 	public AlloyArmor(String name, ArmorMaterial material, EntityEquipmentSlot type, String modid) {
 	    super(material, 0, type);
 		setCreativeTab(AlloycraftMain.alloycrafttab);
 		GameRegistry.register(this, new ResourceLocation(modid, name));
 		maxStackSize = 1;
-		Material = material;
 	    this.setUnlocalizedName(modid + "_" + name);
 	}
 	
@@ -46,8 +44,6 @@ public class AlloyArmor extends ItemArmor implements ISpecialArmor {
 	    strength = stack.getTagCompound().getInteger("Strength");
 	    enchantability = stack.getTagCompound().getInteger("Enchantability");
 	    //setColor(stack, new Color(0,0,255).getRGB());
-	    Material.getDamageReductionAmount(armorType);
-	    this.getArmorMaterial().getDamageReductionAmount(armorType)
 	    setMaxDamage(stack.getTagCompound().getInteger("Durability") + 1);
 		((ItemArmor) stack.getItem()).setColor(stack, new Color(stack.getTagCompound().getInteger("Strength"), stack.getTagCompound().getInteger("Durability"), stack.getTagCompound().getInteger("Enchantability")).getRGB());    
 	}
